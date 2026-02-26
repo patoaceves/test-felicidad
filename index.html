@@ -2,54 +2,55 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test de Felicidad — Sophia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&family=Poltawski+Nowy:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&family=Poltawski+Nowy:wght@700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Karla', sans-serif; background: white; color: #1a1a1a; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Karla',sans-serif; background:white; color:#1a1a1a; }
 
     /* ══ HEADER ══ */
     #site-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 95px;
-      border-bottom: 1px solid #f0ebe6;
-      background: #FFFCFA;
-      position: sticky; top: 0; z-index: 100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 48px; height:95px;
+      border-bottom:1px solid #f0ebe6;
+      background:#FFFCFA;
+      position:sticky; top:0; z-index:100;
     }
-    #site-header .logo { display: flex; align-items: center; text-decoration: none; }
-    #site-header .logo img { height: 118px; }
-    #site-header nav { display: flex; gap: 28px; align-items: center; }
+    #site-header .logo { display:flex; align-items:center; text-decoration:none; }
+    #site-header .logo img { height:118px; }
+    #site-header nav { display:flex; gap:28px; align-items:center; }
     #site-header nav a {
-      text-decoration: none; font-size: 1em; font-weight: 400;
-      color: #c0112f; text-transform: uppercase; letter-spacing: 0.08em;
-      transition: opacity 0.2s;
+      text-decoration:none; font-size:1em; font-weight:400;
+      color:#c0112f; text-transform:uppercase; letter-spacing:0.08em;
+      transition:opacity 0.2s;
     }
-    #site-header nav a:hover { opacity: 0.65; }
+    #site-header nav a:hover { opacity:0.65; }
     #site-header .btn-contact {
-      background: #c0112f; color: white !important; border-radius: 8px;
-      padding: 11px 22px; font-size: 0.82em; font-weight: 600;
-      text-decoration: none; transition: background 0.2s; white-space: nowrap;
+      background:#c0112f; color:white; border-radius:8px;
+      padding:11px 22px; font-size:0.82em; font-weight:600;
+      text-decoration:none; transition:background 0.2s; white-space:nowrap;
     }
-    #site-header .btn-contact:hover { background: #a00f27; }
-    @media (max-width: 960px) {
-      #site-header { padding: 0 20px; }
-      #site-header nav { display: none; }
+    #site-header .btn-contact:hover { background:#a00f27; }
+    @media (max-width:960px) {
+      #site-header { padding:0 20px; }
+      #site-header nav { display:none; }
     }
 
     /* ══ LOADER ══ */
     #wheel-loader {
-      position: absolute; inset: 0; background: white;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 28px; z-index: 10; border-radius: 50%;
-      transition: opacity 0.5s ease;
+      position:absolute; inset:0; background:white;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:28px; z-index:10; border-radius:50%;
+      transition:opacity 0.5s ease;
     }
-    #wheel-loader.hide { opacity: 0; pointer-events: none; }
+    #wheel-loader.hide { opacity:0; pointer-events:none; }
     .spinner-ring {
-      width: 70px; height: 70px; border-radius: 50%;
-      background: conic-gradient(#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60,#E74C3C);
-      animation: spin 1.2s linear infinite; position: relative;
+      width:70px; height:70px; border-radius:50%;
+      background:conic-gradient(#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60,#E74C3C);
+      animation:spin 1.2s linear infinite; position:relative;
     }
     .spinner-ring::before { content:''; position:absolute; inset:5px; border-radius:50%; background:white; }
     .spinner-ring::after {
@@ -73,28 +74,16 @@
     @keyframes gshift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
 
     /* ══ HERO ══ */
-    #hero {
-      display:flex; align-items:center; justify-content:center;
-      gap:50px; padding:50px 60px 30px;
-    }
-    #wheel-wrap {
-      position:relative; width:100%; max-width:576px;
-      flex-shrink:0; aspect-ratio:1;
-    }
+    #hero { display:flex; align-items:center; justify-content:center; gap:50px; padding:50px 60px 30px; }
+    #wheel-wrap { position:relative; width:100%; max-width:576px; flex-shrink:0; aspect-ratio:1; }
     #wheel-wrap svg { width:100%; height:100%; }
     #intro-text { max-width:360px; }
     #intro-text::before {
       content:''; display:block; width:3px; height:60px;
       background:#c0112f; margin-bottom:20px; border-radius:2px;
     }
-    #nombre-texto {
-      font-weight:400; font-size:0.85em; color:#999;
-      margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em;
-    }
-    #intro-text h1 {
-      font-family:'Poltawski Nowy', serif; font-weight:700;
-      font-size:2em; color:#1a1a1a; margin-bottom:16px; line-height:1.2;
-    }
+    #nombre-texto { font-weight:400; font-size:0.85em; color:#999; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; }
+    #intro-text h1 { font-family:'Poltawski Nowy',serif; font-weight:700; font-size:2em; color:#1a1a1a; margin-bottom:16px; line-height:1.2; }
     #intro-text p { font-weight:300; font-size:1em; line-height:1.8; color:#444; }
     @media (max-width:900px) {
       #hero { flex-direction:column; padding:24px 20px; gap:24px; }
@@ -127,27 +116,16 @@
       .grid { grid-template-columns:1fr; }
       #bloques-section { padding:10px 20px 30px; }
     }
-    .column {
-      border-radius:18px; padding:24px 18px;
-      opacity:0; transform:translateY(40px);
-      transition:opacity 0.6s ease, transform 0.6s ease;
-    }
+    .column { border-radius:18px; padding:24px 18px; opacity:0; transform:translateY(40px); transition:opacity 0.6s ease, transform 0.6s ease; }
     .column.show { opacity:1; transform:translateY(0); }
     .column.fortaleza   { background:linear-gradient(160deg,#d1fae5,#f0fdf4); }
     .column.crecimiento { background:linear-gradient(160deg,#fef3cd,#fffbeb); }
     .column.vulnerable  { background:linear-gradient(160deg,#fce4e4,#fef2f2); }
-    .column-title {
-      font-weight:400; font-size:1em; text-transform:uppercase;
-      letter-spacing:0.12em; margin-bottom:16px; padding-bottom:10px;
-      border-bottom:1px solid rgba(0,0,0,0.08);
-    }
+    .column-title { font-weight:400; font-size:1em; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.08); }
     .fortaleza   .column-title { color:#059669; }
     .crecimiento .column-title { color:#d97706; }
     .vulnerable  .column-title { color:#dc2626; }
-    .card {
-      background:white; border-radius:14px; padding:20px; margin-bottom:14px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.07); transition:transform 0.2s, box-shadow 0.2s;
-    }
+    .card { background:white; border-radius:14px; padding:20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.07); transition:transform 0.2s, box-shadow 0.2s; }
     .card:last-child { margin-bottom:0; }
     .card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,0.1); }
     .card h3 { font-weight:500; font-size:0.95em; margin-bottom:8px; }
@@ -156,30 +134,17 @@
 
     /* ══ QUÉ SIGUE ══ */
     #que-sigue { padding:60px; background:#FFFCFA; }
-    #que-sigue h2 {
-      font-family:'Poltawski Nowy', serif; font-weight:700;
-      font-size:2.5em; color:#1a1a1a; margin-bottom:16px;
-    }
-    #que-sigue p {
-      font-weight:300; font-size:1.05em; line-height:1.8; color:#444; max-width:780px;
-    }
+    #que-sigue h2 { font-family:'Poltawski Nowy',serif; font-weight:700; font-size:2.5em; color:#1a1a1a; margin-bottom:16px; }
+    #que-sigue p { font-weight:300; font-size:1.05em; line-height:1.8; color:#444; max-width:780px; }
     @media (max-width:768px) {
       #que-sigue { padding:40px 20px; }
       #que-sigue h2 { font-size:1.9em; }
     }
 
     /* ══ SHARE ══ */
-    #share-section {
-      padding:70px 60px; text-align:center;
-      border-top:1px solid #e8e8e8; background:#FFFCFA;
-    }
-    #share-section h3 {
-      font-weight:400; font-size:0.82em; text-transform:uppercase;
-      letter-spacing:0.14em; color:#bbb; margin-bottom:10px;
-    }
-    #share-section h2 {
-      font-weight:500; font-size:1.5em; color:#1a1a1a; margin-bottom:32px;
-    }
+    #share-section { padding:70px 60px; text-align:center; border-top:1px solid #e8e8e8; background:#FFFCFA; }
+    #share-section h3 { font-weight:400; font-size:0.82em; text-transform:uppercase; letter-spacing:0.14em; color:#bbb; margin-bottom:10px; }
+    #share-section h2 { font-weight:500; font-size:1.5em; color:#1a1a1a; margin-bottom:32px; }
     .share-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     .share-btn {
       display:inline-flex; align-items:center; gap:10px;
@@ -200,52 +165,20 @@
 
     /* ══ FOOTER ══ */
     #site-footer { background:#f5f5f5; padding:52px 60px 32px; }
-    .footer-grid {
-      display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
-      gap:48px; margin-bottom:40px; align-items:start;
-    }
-
-    /* Columna 1: logo + menú */
-    .footer-brand img { height: 101px; display:block; margin-bottom:20px; }
-    .footer-brand a {
-      display:block; text-decoration:none; color:#333;
-      font-size:1em; font-weight:400; margin-bottom:10px;
-      text-transform:uppercase; letter-spacing:0.07em; transition:color 0.2s;
-    }
+    .footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:48px; margin-bottom:40px; align-items:start; }
+    .footer-brand img { height:101px; display:block; margin-bottom:20px; }
+    .footer-brand a { display:block; text-decoration:none; color:#333; font-size:1em; font-weight:400; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.07em; transition:color 0.2s; }
     .footer-brand a:hover { color:#c0112f; }
-
-    /* Columnas interiores */
-    .footer-col h4 {
-      font-size:0.72em; font-weight:700; text-transform:uppercase;
-      letter-spacing:0.12em; color:#aaa; margin-bottom:14px;
-    }
+    .footer-col h4 { font-size:0.72em; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#aaa; margin-bottom:14px; }
     .footer-col p { font-size:0.86em; color:#555; line-height:1.75; }
     .footer-col p a { color:#c0112f; text-decoration:none; }
-
-    /* Columna redes */
     .social-icons { display:flex; gap:12px; margin-bottom:20px; }
-    .social-icons a {
-      width:38px; height:38px; border-radius:50%; background:#c0112f;
-      display:flex; align-items:center; justify-content:center;
-      text-decoration:none; transition:background 0.2s; flex-shrink:0;
-    }
+    .social-icons a { width:38px; height:38px; border-radius:50%; background:#c0112f; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:background 0.2s; flex-shrink:0; }
     .social-icons a:hover { background:#a00f27; }
     .social-icons svg { width:17px; height:17px; fill:white; }
-
-    /* Botón Contáctanos footer — idéntico al del header */
-    .footer-btn {
-      display:inline-block; background:#c0112f; color:white;
-      border-radius:8px; padding:11px 22px;
-      font-size:0.82em; font-weight:600; font-family:'Karla',sans-serif;
-      text-decoration:none; white-space:nowrap; transition:background 0.2s;
-    }
+    .footer-btn { display:inline-block; background:#c0112f; color:white; border-radius:8px; padding:11px 22px; font-size:0.82em; font-weight:600; font-family:'Karla',sans-serif; text-decoration:none; white-space:nowrap; transition:background 0.2s; }
     .footer-btn:hover { background:#a00f27; }
-
-    .footer-bottom {
-      border-top:1px solid #ddd; padding-top:20px;
-      display:flex; justify-content:space-between; align-items:center;
-      font-size:0.78em; color:#aaa;
-    }
+    .footer-bottom { border-top:1px solid #ddd; padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78em; color:#aaa; }
     .footer-bottom a { color:#aaa; text-decoration:none; transition:color 0.2s; }
     .footer-bottom a:hover { color:#c0112f; }
     @media (max-width:768px) {
@@ -341,8 +274,6 @@
 <!-- ══ FOOTER ══ -->
 <footer id="site-footer">
   <div class="footer-grid">
-
-    <!-- Col 1: logo + menú -->
     <div class="footer-brand">
       <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
       <a href="https://sophiamx.org" target="_blank">Home</a>
@@ -352,22 +283,16 @@
       <a href="https://sophiamx.org/embajadores" target="_blank">Embajadores</a>
       <a href="https://sophiamx.org/consultoria" target="_blank">Consultoría</a>
     </div>
-
-    <!-- Col 2: sede -->
     <div class="footer-col">
       <h4>Sede Principal</h4>
       <p>Akadem:<br>Río Suchiate 722, Zona Tampiquito,<br>Lomas del Valle, 66256<br>San Pedro Garza García</p>
     </div>
-
-    <!-- Col 3: contacto -->
     <div class="footer-col">
       <h4>Contacto</h4>
-      <p>+52 81 1988 1581<br><a href="/cdn-cgi/l/email-protection#8be8e4e5ffeae8ffe4cbf8e4fbe3e2eae6f3a5e4f9ec"><span class="__cf_email__" data-cfemail="d4b7bbbaa0b5b7a0bb94a7bba4bcbdb5b9acfabba6b3">[email&#160;protected]</span></a></p>
+      <p>+52 81 1988 1581<br><a href="mailto:contacto@sophiamx.org">contacto@sophiamx.org</a></p>
       <br>
       <p><a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="color:#999;font-size:0.9em;">Política de Privacidad</a></p>
     </div>
-
-    <!-- Col 4: redes + botón -->
     <div class="footer-col">
       <h4>Redes Sociales</h4>
       <div class="social-icons">
@@ -383,7 +308,6 @@
       </div>
       <a class="footer-btn" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
     </div>
-
   </div>
   <div class="footer-bottom">
     <span>© 2026 Sophia. Todos los derechos reservados.</span>
@@ -391,16 +315,16 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const axes = [
-    { name:"Estética Existencial",   icon:"https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color:"#e3a52d", key:"esteticaExistencial",  start:-60,  end:0,   iconSize:72 },
-    { name:"Fe y filosofía de vida", icon:"https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color:"#e3a52d", key:"feFilosofia",          start:0,    end:60,  iconSize:52 },
-    { name:"Vínculos vitales",       icon:"https://static.wixstatic.com/shapes/78c590_6f901ef444bb4acdbe7910e1061f9673.svg", color:"#d21744", key:"vinculosVitales",     start:60,   end:120, iconSize:72 },
-    { name:"Bienestar emocional",    icon:"https://static.wixstatic.com/shapes/78c590_58bbd84251a948709d0532c5dcfc3051.svg", color:"#d21744", key:"bienestarEmocional",  start:120,  end:150, iconSize:52 },
-    { name:"Bienestar físico",       icon:"https://static.wixstatic.com/shapes/78c590_a807fec0f1de43f488df9dcbdf3f644f.svg", color:"#8d9438", key:"bienestarFisico",     start:150,  end:180, iconSize:72 },
-    { name:"Presencia consciente",   icon:"https://static.wixstatic.com/shapes/78c590_ecf22bbada3b4b1eba0f3b9451d78d93.svg", color:"#8d9438", key:"presenciaConsciente", start:180,  end:210, iconSize:58 },
-    { name:"Autoconocimiento",       icon:"https://static.wixstatic.com/shapes/78c590_4e807ff266b5441580a7493fdbd357ce.svg", color:"#66a3f4", key:"autoconocimiento",    start:210,  end:240, iconSize:72 },
-    { name:"Trabajo con propósito",  icon:"https://static.wixstatic.com/shapes/78c590_83f9521fe52a416cb539deeacb3d3289.svg", color:"#66a3f4", key:"trabajoPropósito",   start:240,  end:300, iconSize:52 }
+    { name:"Estética Existencial",   icon:"https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color:"#e3a52d", key:"esteticaExistencial",  start:-60, end:0,   iconSize:72 },
+    { name:"Fe y filosofía de vida", icon:"https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color:"#e3a52d", key:"feFilosofia",          start:0,   end:60,  iconSize:52 },
+    { name:"Vínculos vitales",       icon:"https://static.wixstatic.com/shapes/78c590_6f901ef444bb4acdbe7910e1061f9673.svg", color:"#d21744", key:"vinculosVitales",     start:60,  end:120, iconSize:72 },
+    { name:"Bienestar emocional",    icon:"https://static.wixstatic.com/shapes/78c590_58bbd84251a948709d0532c5dcfc3051.svg", color:"#d21744", key:"bienestarEmocional",  start:120, end:150, iconSize:52 },
+    { name:"Bienestar físico",       icon:"https://static.wixstatic.com/shapes/78c590_a807fec0f1de43f488df9dcbdf3f644f.svg", color:"#8d9438", key:"bienestarFisico",     start:150, end:180, iconSize:72 },
+    { name:"Presencia consciente",   icon:"https://static.wixstatic.com/shapes/78c590_ecf22bbada3b4b1eba0f3b9451d78d93.svg", color:"#8d9438", key:"presenciaConsciente", start:180, end:210, iconSize:58 },
+    { name:"Autoconocimiento",       icon:"https://static.wixstatic.com/shapes/78c590_4e807ff266b5441580a7493fdbd357ce.svg", color:"#66a3f4", key:"autoconocimiento",    start:210, end:240, iconSize:72 },
+    { name:"Trabajo con propósito",  icon:"https://static.wixstatic.com/shapes/78c590_83f9521fe52a416cb539deeacb3d3289.svg", color:"#66a3f4", key:"trabajoPropósito",   start:240, end:300, iconSize:52 }
   ];
 
   const axesList = [
@@ -427,7 +351,7 @@
       return;
     }
     try {
-      const res = await fetch(`/api/dashboard?recordId=${recordId}`);
+      const res = await fetch('/api/dashboard?recordId=' + recordId);
       if (!res.ok) throw new Error('Error');
       const data = await res.json();
       renderAll(data);
@@ -442,133 +366,153 @@
     currentScores = data.scores;
     if (data.nombre) {
       document.getElementById('nombre-texto').textContent =
-        `Hola, ${data.nombre} ${data.apellidos||''}`.trim();
+        ('Hola, ' + data.nombre + ' ' + (data.apellidos||'')).trim();
     }
     generateWheel();
     renderBloques(data.scores, data.analisis);
     setupShareButtons();
     const delay = Math.max(0, 3000-(Date.now()-window._loadStart));
-    setTimeout(() => {
+    setTimeout(function() {
       hideLoader();
       animateSegments();
-      setTimeout(()=>document.getElementById('col-fortaleza').classList.add('show'), 1800);
-      setTimeout(()=>document.getElementById('col-crecimiento').classList.add('show'), 2200);
-      setTimeout(()=>document.getElementById('col-vulnerable').classList.add('show'), 2600);
+      setTimeout(function(){ document.getElementById('col-fortaleza').classList.add('show'); }, 1800);
+      setTimeout(function(){ document.getElementById('col-crecimiento').classList.add('show'); }, 2200);
+      setTimeout(function(){ document.getElementById('col-vulnerable').classList.add('show'); }, 2600);
     }, delay);
   }
 
   function hideLoader() {
-    const loader = document.getElementById('wheel-loader');
+    var loader = document.getElementById('wheel-loader');
     loader.classList.add('hide');
-    setTimeout(()=>loader.style.display='none', 500);
+    setTimeout(function(){ loader.style.display='none'; }, 500);
   }
 
   function setupShareButtons() {
-    const url   = encodeURIComponent(window.location.href);
-    const texto = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
-    document.getElementById('btn-wa').href  = `https://wa.me/?text=${texto}%20${url}`;
-    document.getElementById('btn-fb').href  = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${texto}`;
-    document.getElementById('btn-mail').href= `mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad%20%E2%80%94%20Sophia&body=${texto}%0A%0A${url}`;
+    var url   = encodeURIComponent(window.location.href);
+    var texto = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
+    document.getElementById('btn-wa').href   = 'https://wa.me/?text=' + texto + '%20' + url;
+    document.getElementById('btn-fb').href   = 'https://www.facebook.com/sharer/sharer.php?u=' + url + '&quote=' + texto;
+    document.getElementById('btn-mail').href = 'mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad%20%E2%80%94%20Sophia&body=' + texto + '%0A%0A' + url;
   }
 
   function seg(iR,oR,sA,eA) {
-    const s=(sA-90)*Math.PI/180, e=(eA-90)*Math.PI/180;
-    const x1o=cx+oR*Math.cos(s), y1o=cy+oR*Math.sin(s);
-    const x2o=cx+oR*Math.cos(e), y2o=cy+oR*Math.sin(e);
-    const x1i=cx+iR*Math.cos(s), y1i=cy+iR*Math.sin(s);
-    const x2i=cx+iR*Math.cos(e), y2i=cy+iR*Math.sin(e);
-    const lg=(eA-sA+360)%360>180?1:0;
-    return `M ${x1o} ${y1o} A ${oR} ${oR} 0 ${lg} 1 ${x2o} ${y2o} L ${x2i} ${y2i} A ${iR} ${iR} 0 ${lg} 0 ${x1i} ${y1i} Z`;
+    var s=(sA-90)*Math.PI/180, e=(eA-90)*Math.PI/180;
+    var x1o=cx+oR*Math.cos(s), y1o=cy+oR*Math.sin(s);
+    var x2o=cx+oR*Math.cos(e), y2o=cy+oR*Math.sin(e);
+    var x1i=cx+iR*Math.cos(s), y1i=cy+iR*Math.sin(s);
+    var x2i=cx+iR*Math.cos(e), y2i=cy+iR*Math.sin(e);
+    var lg=(eA-sA+360)%360>180?1:0;
+    return 'M '+x1o+' '+y1o+' A '+oR+' '+oR+' 0 '+lg+' 1 '+x2o+' '+y2o+' L '+x2i+' '+y2i+' A '+iR+' '+iR+' 0 '+lg+' 0 '+x1i+' '+y1i+' Z';
   }
 
   function midIconPos(sA,eA) {
-    const mid=sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
-    const r=innerR+(outerR-innerR)*0.5;
+    var mid=sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
+    var r=innerR+(outerR-innerR)*0.5;
     return {x:cx+r*Math.cos(rad), y:cy+r*Math.sin(rad)};
   }
 
   function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg',tag); }
 
   function generateWheel() {
-    const svg=document.getElementById('wheel');
+    var svg=document.getElementById('wheel');
     svg.innerHTML='';
-    axes.forEach((axis,i)=>{
-      const g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
-      const empty=ns('path');
+    for (var i=0; i<axes.length; i++) {
+      var axis=axes[i];
+      var g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
+      var empty=ns('path');
       empty.setAttribute('d', seg(innerR,outerR,axis.start,axis.end));
       empty.classList.add('segment-empty'); g.appendChild(empty);
-      const filled=ns('path');
+      var filled=ns('path');
       filled.setAttribute('d', seg(innerR,innerR+1,axis.start,axis.end));
       filled.setAttribute('fill',axis.color); filled.classList.add('segment-filled');
-      filled.id=`filled-${i}`; g.appendChild(filled);
+      filled.id='filled-'+i; g.appendChild(filled);
       svg.appendChild(g);
-      const pos=midIconPos(axis.start,axis.end);
-      const img=ns('image');
+      var pos=midIconPos(axis.start,axis.end);
+      var img=ns('image');
       img.setAttribute('href',axis.icon);
       img.setAttribute('x', pos.x-axis.iconSize/2);
       img.setAttribute('y', pos.y-axis.iconSize/2);
       img.setAttribute('width',axis.iconSize);
       img.setAttribute('height',axis.iconSize);
-      img.classList.add('icon-img'); img.id=`icon-${i}`;
+      img.classList.add('icon-img'); img.id='icon-'+i;
       svg.appendChild(img);
-    });
-    const c=ns('circle');
+    }
+    var c=ns('circle');
     c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR);
     c.classList.add('center-circle'); svg.appendChild(c);
     setupTooltips();
   }
 
-  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function easeOutCubic(t){ return 1-Math.pow(1-t,3); }
 
   function animateSegments() {
-    const duration=1200,stagger=120,t0=performance.now();
+    var duration=1200, stagger=120, t0=performance.now();
     function frame(now) {
-      let done=true;
-      axes.forEach((axis,i)=>{
-        const elapsed=now-t0-i*stagger;
-        if(elapsed<0){done=false;return;}
-        const p=Math.min(elapsed/duration,1), e=easeOutCubic(p);
-        const score=currentScores[axis.key]||0;
-        const targetR=innerR+(outerR-innerR)*(score/10);
-        const curR=innerR+(targetR-innerR)*e;
-        const fp=document.getElementById(`filled-${i}`);
+      var done=true;
+      for (var i=0; i<axes.length; i++) {
+        var axis=axes[i];
+        var elapsed=now-t0-i*stagger;
+        if(elapsed<0){done=false;continue;}
+        var p=Math.min(elapsed/duration,1);
+        var e=easeOutCubic(p);
+        var score=currentScores[axis.key]||0;
+        var targetR=innerR+(outerR-innerR)*(score/10);
+        var curR=innerR+(targetR-innerR)*e;
+        var fp=document.getElementById('filled-'+i);
         if(fp) fp.setAttribute('d',seg(innerR,curR,axis.start,axis.end));
-        if(p>0.5){const ic=document.getElementById(`icon-${i}`);if(ic)ic.classList.add('visible');}
+        if(p>0.5){var ic=document.getElementById('icon-'+i);if(ic)ic.classList.add('visible');}
         if(p<1) done=false;
-      });
+      }
       if(!done) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
 
   function setupTooltips() {
-    const tooltip=document.getElementById('tooltip');
-    document.querySelectorAll('.segment-group').forEach(g=>{
-      g.addEventListener('mouseenter',e=>{
-        const i=parseInt(e.currentTarget.dataset.index);
-        const t=tooltip.querySelector('.tooltip-title');
-        t.textContent=axes[i].name; t.style.color=axes[i].color;
-        tooltip.querySelector('.tooltip-score').textContent=`Puntuación: ${currentScores[axes[i].key]||0}/10`;
-        tooltip.classList.add('active');
-      });
-      g.addEventListener('mousemove',e=>{
-        let l=e.clientX+15,t=e.clientY+15;
-        if(l+250>window.innerWidth) l=e.clientX-265;
-        if(t+80>window.innerHeight) t=e.clientY-95;
-        tooltip.style.left=l+'px'; tooltip.style.top=t+'px';
-      });
-      g.addEventListener('mouseleave',()=>tooltip.classList.remove('active'));
-    });
+    var tooltip=document.getElementById('tooltip');
+    var groups=document.querySelectorAll('.segment-group');
+    for (var i=0; i<groups.length; i++) {
+      (function(idx){
+        groups[idx].addEventListener('mouseenter',function(){
+          var t=tooltip.querySelector('.tooltip-title');
+          t.textContent=axes[idx].name; t.style.color=axes[idx].color;
+          tooltip.querySelector('.tooltip-score').textContent='Puntuación: '+(currentScores[axes[idx].key]||0)+'/10';
+          tooltip.classList.add('active');
+        });
+        groups[idx].addEventListener('mousemove',function(e){
+          var l=e.clientX+15, t=e.clientY+15;
+          if(l+250>window.innerWidth) l=e.clientX-265;
+          if(t+80>window.innerHeight) t=e.clientY-95;
+          tooltip.style.left=l+'px'; tooltip.style.top=t+'px';
+        });
+        groups[idx].addEventListener('mouseleave',function(){ tooltip.classList.remove('active'); });
+      })(i);
+    }
   }
 
   function renderBloques(scores,analisis) {
-    const fortaleza   = axesList.filter(a=>scores[a.key]>=8&&scores[a.key]<=10);
-    const crecimiento = axesList.filter(a=>scores[a.key]>=5&&scores[a.key]<=7);
-    const vulnerable  = axesList.filter(a=>scores[a.key]>=1&&scores[a.key]<=4);
+    var fortaleza=[], crecimiento=[], vulnerable=[];
+    for (var i=0; i<axesList.length; i++) {
+      var a=axesList[i], s=scores[a.key];
+      if(s>=8&&s<=10) fortaleza.push(a);
+      else if(s>=5&&s<=7) crecimiento.push(a);
+      else if(s>=1&&s<=4) vulnerable.push(a);
+    }
     function cards(items) {
       if(!items.length) return '<div class="empty-msg">Sin ejes en este rango</div>';
-      return items.map(a=>
-        `<div class="card"><h3 style="color:${a.color}">${a.name}</h3><p>${analisis[a.key]||'Análisis pendiente...'}</p></div>`
-      ).join('');
+      var html='';
+      for(var i=0;i<items.length;i++){
+        var a=items[i];
+        html+='<div class="card"><h3 style="color:'+a.color+'">'+a.name+'</h3><p>'+(analisis[a.key]||'Análisis pendiente...')+'</p></div>';
+      }
+      return html;
     }
-    document.getElementById('fortaleza-conte
+    document.getElementById('fortaleza-content').innerHTML   = cards(fortaleza);
+    document.getElementById('crecimiento-content').innerHTML = cards(crecimiento);
+    document.getElementById('vulnerable-content').innerHTML  = cards(vulnerable);
+  }
+
+  loadData();
+</script>
+</body>
+</html>
