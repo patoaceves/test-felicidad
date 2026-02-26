@@ -431,21 +431,21 @@
       svg.appendChild(g);
       var pos=midIconPos(axis.start,axis.end);
       var sz = axis.iconSize * scale;
-      // Fe y filosofía: ícono inline en lugar de imagen externa
+      // Fe y filosofía (i===1): path inline sin filtros de sombra
       if (i === 1) {
+        var s2 = 36 * scale;
         var iconG = ns('g');
         iconG.classList.add('icon-img'); iconG.id='icon-'+i;
-        iconG.setAttribute('transform', 'translate('+pos.x+','+pos.y+')');
-        // Cruz simple blanca
-        var vBar = ns('rect');
-        vBar.setAttribute('x', -4); vBar.setAttribute('y', -18);
-        vBar.setAttribute('width', 8); vBar.setAttribute('height', 36);
-        vBar.setAttribute('rx', 3); vBar.setAttribute('fill', 'white');
-        var hBar = ns('rect');
-        hBar.setAttribute('x', -14); hBar.setAttribute('y', -6);
-        hBar.setAttribute('width', 28); hBar.setAttribute('height', 8);
-        hBar.setAttribute('rx', 3); hBar.setAttribute('fill', 'white');
-        iconG.appendChild(vBar); iconG.appendChild(hBar);
+        // viewBox 1565x1466 → escalar a s2×s2, centrar en pos
+        var scaleX = s2 / 1565;
+        var scaleY = s2 / 1466;
+        var offsetX = pos.x - s2/2;
+        var offsetY = pos.y - s2/2;
+        iconG.setAttribute('transform', 'translate('+offsetX+','+offsetY+') scale('+scaleX+','+scaleY+')');
+        var p = ns('path');
+        p.setAttribute('fill','white');
+        p.setAttribute('d','m1278.28 719.414-32.73 74.404c-59.64-27.44-133.53-63.147-149.71-96.919-35.89-75.459-46.98-198.059-57.71-316.612-8.62-95.512-16.71-185.746-37.3-261.03C979.896 43.622 922.542-2.99 855.16 0c-27.269 1.231-52.076 10.906-72.836 26.56C761.74 10.73 736.758 1.231 709.488 0c-67.558-2.99-124.56 43.622-145.672 119.433-20.584 75.108-28.677 165.342-37.297 260.854-10.732 118.553-21.816 241.153-57.53 316.612-16.186 33.772-90.077 69.479-149.719 96.919l-32.723-74.404L4 843.948 274.232 1458l282.723-124.18-24.103-54.88c132.829-33.25 207.6-86.72 249.648-133.51 41.872 46.79 116.819 100.26 249.65 133.51l-24.1 54.88L1290.77 1458 1561 843.948zM331.938 1310.07 152.135 901.466l77.234-33.948L409.172 1276.3l-77.058 33.77zm391.625-277.56c-7.917 18.99-52.076 100.61-236.629 141.95L364.661 896.541c82.512-37.994 172.414-81.616 205.841-151.447 44.511-93.576 56.474-226.377 68.085-354.781 8.093-90.411 15.834-175.896 33.779-240.977 6.51-23.219 18.825-37.466 32.02-37.114 9.852.527 17.945 9.322 21.464 23.218l-2.287 896.89zm117.874.53-2.287-897.424c3.519-14.072 11.436-22.867 21.464-23.219 13.019-.879 25.686 13.896 32.02 36.939 17.945 65.433 25.686 150.918 33.779 241.329 11.611 128.403 23.574 261.205 68.085 354.957 33.432 69.655 123.332 113.277 205.842 151.271l-122.27 277.917c-186.844-41.87-229.771-124.89-236.633-141.42zm391.623 277.03L1156 1276.3l179.81-408.782 77.23 33.948-179.8 408.604z');
+        iconG.appendChild(p);
         svg.appendChild(iconG);
       } else {
         var img=ns('image');
