@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test de Felicidad — Sophia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Poltawski+Nowy:wght@700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Karla', sans-serif; background: white; color: #1a1a1a; }
@@ -12,13 +12,13 @@
     /* ── HEADER ── */
     #site-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 70px;
-      border-bottom: 1px solid #f0f0f0;
-      background: white;
+      padding: 0 40px; height: 95px;
+      border-bottom: 1px solid #f0ebe6;
+      background: #FFFCFA;
       position: sticky; top: 0; z-index: 100;
     }
     #site-header .logo { display: flex; align-items: center; text-decoration: none; }
-    #site-header .logo img { height: 40px; }
+    #site-header .logo img { height: 44px; }
     #site-header nav { display: flex; gap: 28px; align-items: center; }
     #site-header nav a {
       text-decoration: none; font-size: 0.82em; font-weight: 500;
@@ -28,7 +28,7 @@
     #site-header nav a:hover { opacity: 0.7; }
     #site-header .btn-contact {
       background: #c0112f; color: white; border-radius: 8px;
-      padding: 10px 20px; font-size: 0.82em; font-weight: 600;
+      padding: 11px 22px; font-size: 0.82em; font-weight: 600;
       text-decoration: none; transition: background 0.2s;
     }
     #site-header .btn-contact:hover { background: #a00f27; }
@@ -86,11 +86,11 @@
       gap: 50px; padding: 50px 60px 30px;
     }
     #wheel-wrap {
-      position: relative; width: 100%; max-width: 480px;
+      position: relative; width: 100%; max-width: 576px;
       flex-shrink: 0; aspect-ratio: 1;
     }
     #wheel-wrap svg { width: 100%; height: 100%; }
-    #intro-text { max-width: 380px; }
+    #intro-text { max-width: 360px; }
     #intro-text::before {
       content: ''; display: block; width: 3px; height: 60px;
       background: #c0112f; margin-bottom: 20px; border-radius: 2px;
@@ -100,11 +100,12 @@
       margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.1em;
     }
     #intro-text h1 {
-      font-weight: 500; font-size: 2em; color: #1a1a1a;
+      font-family: 'Poltawski Nowy', serif;
+      font-weight: 700; font-size: 2em; color: #1a1a1a;
       margin-bottom: 16px; line-height: 1.2;
     }
     #intro-text p { font-weight: 300; font-size: 1em; line-height: 1.8; color: #444; }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       #hero { flex-direction: column; padding: 24px 20px; gap: 24px; }
       #wheel-wrap { max-width: 100%; }
       #intro-text { max-width: 100%; }
@@ -129,7 +130,7 @@
     .tooltip-score { color: #666; font-size: 13px; }
 
     /* ── BLOQUES ── */
-    #bloques-section { padding: 10px 60px 40px; }
+    #bloques-section { padding: 10px 60px 50px; }
     .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
@@ -162,62 +163,95 @@
     .card p  { font-weight: 300; font-size: 0.9em; line-height: 1.7; color: #333; }
     .empty-msg { font-weight: 300; font-size: 0.88em; color: rgba(0,0,0,0.35); text-align: center; padding: 30px 10px; }
 
+    /* ── QUÉ SIGUE ── */
+    #que-sigue {
+      border-top: 1px solid #e8e8e8;
+      padding: 60px;
+    }
+    #que-sigue h2 {
+      font-family: 'Poltawski Nowy', serif;
+      font-size: 2.5em; font-weight: 700; color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+    #que-sigue p {
+      font-weight: 300; font-size: 1.05em; line-height: 1.8;
+      color: #444; max-width: 780px;
+    }
+    @media (max-width: 768px) {
+      #que-sigue { padding: 40px 20px; }
+      #que-sigue h2 { font-size: 1.8em; }
+    }
+
     /* ── SHARE ── */
     #share-section {
-      padding: 40px 60px 50px; text-align: center;
+      padding: 70px 60px; text-align: center;
       border-top: 1px solid #e8e8e8;
+      background: #FFFCFA;
     }
     #share-section h3 {
       font-weight: 400; font-size: 0.85em; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #aaa; margin-bottom: 20px;
+      letter-spacing: 0.14em; color: #aaa; margin-bottom: 10px;
+    }
+    #share-section h2 {
+      font-weight: 500; font-size: 1.5em; color: #1a1a1a; margin-bottom: 30px;
     }
     .share-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .share-btn {
       display: flex; align-items: center; gap: 10px;
-      padding: 12px 24px; border-radius: 10px; font-size: 0.9em;
+      padding: 14px 28px; border-radius: 10px; font-size: 0.95em;
       font-weight: 500; text-decoration: none; font-family: 'Karla', sans-serif;
       cursor: pointer; border: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
     .share-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
     .share-wa   { background: #25D366; color: white; }
     .share-fb   { background: #1877F2; color: white; }
-    .share-mail { background: #f5f5f5; color: #333; border: 1px solid #ddd; }
+    .share-mail { background: white; color: #333; border: 1.5px solid #ddd; }
     @media (max-width: 768px) {
-      #share-section { padding: 30px 20px 40px; }
+      #share-section { padding: 50px 20px; }
       .share-buttons { flex-direction: column; align-items: center; }
-      .share-btn { width: 240px; justify-content: center; }
+      .share-btn { width: 260px; justify-content: center; }
     }
 
     /* ── FOOTER ── */
     #site-footer { background: #f5f5f5; padding: 50px 60px 30px; }
     .footer-grid {
-      display: grid; grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 40px; margin-bottom: 40px;
     }
-    .footer-logo img { height: 44px; margin-bottom: 10px; }
-    .footer-logo p { font-size: 0.78em; color: #aaa; }
+    .footer-col-logo img { height: 48px; margin-bottom: 0; }
     .footer-col h4 {
-      font-size: 0.72em; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.12em; color: #999; margin-bottom: 14px;
+      font-size: 0.72em; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: #999; margin-bottom: 16px;
     }
     .footer-col a {
-      display: block; text-decoration: none; color: #444;
-      font-size: 0.88em; font-weight: 400; margin-bottom: 9px;
+      display: block; text-decoration: none; color: #333;
+      font-size: 0.88em; font-weight: 500; margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: 0.05em;
       transition: color 0.2s;
     }
     .footer-col a:hover { color: #c0112f; }
     .footer-col p { font-size: 0.86em; color: #555; line-height: 1.7; }
-    .footer-col p a { display: inline; margin-bottom: 0; color: #c0112f; }
-    .social-icons { display: flex; gap: 12px; margin-top: 4px; }
+    .footer-col p a {
+      display: inline; margin-bottom: 0; color: #c0112f;
+      text-transform: none; letter-spacing: 0; font-weight: 400;
+    }
+    .social-icons { display: flex; gap: 12px; margin-bottom: 20px; }
     .social-icons a {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: #c0112f; color: white;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #c0112f;
       display: flex; align-items: center; justify-content: center;
       text-decoration: none; transition: background 0.2s;
     }
     .social-icons a:hover { background: #a00f27; }
-    .social-icons svg { width: 16px; height: 16px; fill: white; }
+    .social-icons svg { width: 17px; height: 17px; fill: white; }
+    .footer-btn-contact {
+      display: inline-block; background: #c0112f; color: white;
+      border-radius: 8px; padding: 11px 22px;
+      font-size: 0.85em; font-weight: 600; text-decoration: none;
+      transition: background 0.2s; text-transform: none; letter-spacing: 0;
+    }
+    .footer-btn-contact:hover { background: #a00f27; color: white; }
     .footer-bottom {
       border-top: 1px solid #ddd; padding-top: 20px;
       display: flex; justify-content: space-between; align-items: center;
@@ -237,7 +271,7 @@
   <!-- ══ HEADER ══ -->
   <header id="site-header">
     <a class="logo" href="https://sophiamx.org" target="_blank">
-      <img src="https://static.wixstatic.com/media/78c590_7fc3ee8c3e554e3ba46e18d9f5a73e41~mv2.png" alt="Sophia">
+      <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
     </a>
     <nav>
       <a href="https://sophiamx.org" target="_blank">Home</a>
@@ -289,9 +323,16 @@
     </div>
   </div>
 
+  <!-- ══ QUÉ SIGUE ══ -->
+  <div id="que-sigue">
+    <h2>¿Qué sigue?</h2>
+    <p>Suena fácil, pero descubrir tu propósito no es solo cuestión de llenar un formulario como lo hiciste. Requiere herramientas, acompañamiento y tiempo, y eso es justamente lo que hacemos en SOPHIA.</p>
+  </div>
+
   <!-- ══ SHARE ══ -->
   <div id="share-section">
-    <h3>Comparte tus resultados</h3>
+    <h3>¿Te identificaste con tus resultados?</h3>
+    <h2>Comparte tus resultados</h2>
     <div class="share-buttons">
       <a class="share-btn share-wa" id="btn-wa" href="#" target="_blank">
         <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -311,9 +352,8 @@
   <!-- ══ FOOTER ══ -->
   <footer id="site-footer">
     <div class="footer-grid">
-      <div class="footer-col footer-logo">
-        <img src="https://static.wixstatic.com/media/78c590_7fc3ee8c3e554e3ba46e18d9f5a73e41~mv2.png" alt="Sophia">
-        <p>Learn. Connect. Grow.</p>
+      <div class="footer-col footer-col-logo">
+        <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
       </div>
       <div class="footer-col">
         <h4>Menú</h4>
@@ -326,12 +366,12 @@
       </div>
       <div class="footer-col">
         <h4>Sede Principal</h4>
-        <p>Akadem: Río Suchiate 722, Zona Tampiquito, Lomas del Valle, 66256 San Pedro Garza García</p>
+        <p>Akadem:<br>Río Suchiate 722, Zona Tampiquito,<br>Lomas del Valle, 66256<br>San Pedro Garza García</p>
         <br>
         <h4>Contacto</h4>
         <p>+52 81 1988 1581<br><a href="mailto:contacto@sophiamx.org">contacto@sophiamx.org</a></p>
         <br>
-        <a href="https://sophiamx.org/politica-de-privacidad" target="_blank">Política de Privacidad</a>
+        <a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.86em;color:#777;">Política de Privacidad</a>
       </div>
       <div class="footer-col">
         <h4>Redes Sociales</h4>
@@ -346,10 +386,11 @@
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
         </div>
+        <a class="footer-btn-contact" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Sophia. Todos los derechos reservados.</span>
+      <span>© 2026 Sophia. Todos los derechos reservados.</span>
       <a href="https://sophiamx.org/politica-de-privacidad" target="_blank">Política de Privacidad</a>
     </div>
   </footer>
@@ -428,15 +469,21 @@
     }
 
     function setupShareButtons() {
-      const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
-      document.getElementById('btn-wa').href   = `https://wa.me/?text=${text}%20${url}`;
-      document.getElementById('btn-fb').href   = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-      document.getElementById('btn-mail').href = `mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad&body=${text}%0A${url}`;
+      const url   = encodeURIComponent(window.location.href);
+      const texto = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
+      // WhatsApp: texto + URL
+      document.getElementById('btn-wa').href =
+        `https://wa.me/?text=${texto}%20${url}`;
+      // Facebook: url + quote (el parámetro quote no es oficial pero funciona en algunos casos)
+      document.getElementById('btn-fb').href =
+        `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${texto}`;
+      // Email
+      document.getElementById('btn-mail').href =
+        `mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad%20%E2%80%94%20Sophia&body=${texto}%0A%0A${url}`;
     }
 
     function seg(iR, oR, sA, eA) {
-      const s = (sA-90)*Math.PI/180, e = (eA-90)*Math.PI/180;
+      const s=(sA-90)*Math.PI/180, e=(eA-90)*Math.PI/180;
       const x1o=cx+oR*Math.cos(s), y1o=cy+oR*Math.sin(s);
       const x2o=cx+oR*Math.cos(e), y2o=cy+oR*Math.sin(e);
       const x1i=cx+iR*Math.cos(s), y1i=cy+iR*Math.sin(s);
@@ -446,9 +493,9 @@
     }
 
     function midIconPos(sA, eA) {
-      const mid = sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
-      const r = innerR+(outerR-innerR)*0.5;
-      return { x: cx+r*Math.cos(rad), y: cy+r*Math.sin(rad) };
+      const mid=sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
+      const r=innerR+(outerR-innerR)*0.5;
+      return {x:cx+r*Math.cos(rad), y:cy+r*Math.sin(rad)};
     }
 
     function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
@@ -469,9 +516,12 @@
         const pos = midIconPos(axis.start, axis.end);
         const img = ns('image');
         img.setAttribute('href', axis.icon);
-        img.setAttribute('x', pos.x-axis.iconSize/2); img.setAttribute('y', pos.y-axis.iconSize/2);
-        img.setAttribute('width', axis.iconSize); img.setAttribute('height', axis.iconSize);
-        img.classList.add('icon-img'); img.id = `icon-${i}`; svg.appendChild(img);
+        img.setAttribute('x', pos.x - axis.iconSize/2);
+        img.setAttribute('y', pos.y - axis.iconSize/2);
+        img.setAttribute('width', axis.iconSize);
+        img.setAttribute('height', axis.iconSize);
+        img.classList.add('icon-img'); img.id = `icon-${i}`;
+        svg.appendChild(img);
       });
       const c = ns('circle');
       c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', innerR);
