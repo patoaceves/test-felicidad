@@ -458,7 +458,8 @@
       } else {
         var img=ns('image');
         img.setAttribute('href',axis.icon);
-        img.setAttribute('x', pos.x-sz/2);
+        var xOff = (i === 6) ? -12 : 0;
+        img.setAttribute('x', pos.x-sz/2+xOff);
         img.setAttribute('y', pos.y-sz/2);
         img.setAttribute('width',sz);
         img.setAttribute('height',sz);
