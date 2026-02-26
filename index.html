@@ -95,7 +95,6 @@
       text-align:center; font-size:0.88em; color:#bbb;
       font-weight:400; letter-spacing:0.03em; margin-bottom:10px;
     }
-    @media (max-width:900px) { #wheel-hint { display:none; } }
 
     /* ══ RUEDA ══ */
     .segment-group { cursor:pointer; }
@@ -214,17 +213,19 @@
 
 <!-- ══ HERO ══ -->
 <div id="hero">
-  <div id="wheel-wrap">
+  <div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:576px;flex-shrink:0;">
     <p id="wheel-hint">Pasa por encima de las secciones para conocer tu puntaje</p>
-    <div id="wheel-loader">
-      <div class="spinner-ring"></div>
-      <div class="loader-text">Preparando tu Diagrama<span class="dots"></span></div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-    </div>
-    <svg id="wheel" viewBox="0 0 500 500"></svg>
-    <div class="tooltip" id="tooltip">
-      <div class="tooltip-title"></div>
-      <div class="tooltip-score"></div>
+    <div id="wheel-wrap">
+      <div id="wheel-loader">
+        <div class="spinner-ring"></div>
+        <div class="loader-text">Preparando tu Diagrama<span class="dots"></span></div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </div>
+      <svg id="wheel" viewBox="0 0 500 500"></svg>
+      <div class="tooltip" id="tooltip">
+        <div class="tooltip-title"></div>
+        <div class="tooltip-score"></div>
+      </div>
     </div>
   </div>
   <div id="intro-text">
@@ -424,7 +425,7 @@
     var svg=document.getElementById('wheel');
     svg.innerHTML='';
     var isMobile = window.innerWidth < 600;
-    var scale = isMobile ? 0.78 : 1;
+    var scale = isMobile ? 1.13 : 1;
     for (var i=0; i<axes.length; i++) {
       var axis=axes[i];
       var g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
