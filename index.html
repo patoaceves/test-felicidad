@@ -91,6 +91,12 @@
       #intro-text { max-width:100%; }
     }
 
+    #wheel-hint {
+      text-align:center; font-size:0.75em; color:#bbb;
+      font-weight:400; letter-spacing:0.04em; margin-top:10px;
+    }
+    @media (max-width:900px) { #wheel-hint { display:none; } }
+
     /* ══ RUEDA ══ */
     .segment-group { cursor:pointer; }
     .segment-empty { fill:#f0f0f0; stroke:white; stroke-width:3; }
@@ -220,6 +226,7 @@
       <div class="tooltip-score"></div>
     </div>
   </div>
+  <p id="wheel-hint">Pasa por encima de las secciones para conocer tu puntaje</p>
   <div id="intro-text">
     <p id="nombre-texto"></p>
     <h1>Tus resultados</h1>
@@ -417,7 +424,7 @@
     var svg=document.getElementById('wheel');
     svg.innerHTML='';
     var isMobile = window.innerWidth < 600;
-    var scale = isMobile ? 0.65 : 1;
+    var scale = isMobile ? 0.78 : 1;
     for (var i=0; i<axes.length; i++) {
       var axis=axes[i];
       var g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
