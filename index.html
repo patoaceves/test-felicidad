@@ -18,7 +18,7 @@
       position: sticky; top: 0; z-index: 100;
     }
     #site-header .logo { display: flex; align-items: center; text-decoration: none; }
-    #site-header .logo img { height: 44px; }
+    #site-header .logo img { height: 65px; }
     #site-header nav { display: flex; gap: 28px; align-items: center; }
     #site-header nav a {
       text-decoration: none; font-size: 0.82em; font-weight: 500;
@@ -219,7 +219,7 @@
       display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 40px; margin-bottom: 40px;
     }
-    .footer-col-logo img { height: 48px; margin-bottom: 0; }
+    .footer-col-logo img { height: 50px; margin-bottom: 16px; display: block; }
     .footer-col h4 {
       font-size: 0.72em; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.12em; color: #999; margin-bottom: 16px;
@@ -246,12 +246,15 @@
     .social-icons a:hover { background: #a00f27; }
     .social-icons svg { width: 17px; height: 17px; fill: white; }
     .footer-btn-contact {
-      display: inline-block; background: #c0112f; color: white;
+      display: inline-block; background: #c0112f; color: white !important;
       border-radius: 8px; padding: 11px 22px;
-      font-size: 0.85em; font-weight: 600; text-decoration: none;
-      transition: background 0.2s; text-transform: none; letter-spacing: 0;
+      font-size: 0.82em; font-weight: 600; text-decoration: none;
+      font-family: 'Karla', sans-serif;
+      transition: background 0.2s;
+      text-transform: none; letter-spacing: normal;
+      margin-top: 4px;
     }
-    .footer-btn-contact:hover { background: #a00f27; color: white; }
+    .footer-btn-contact:hover { background: #a00f27 !important; }
     .footer-bottom {
       border-top: 1px solid #ddd; padding-top: 20px;
       display: flex; justify-content: space-between; align-items: center;
@@ -354,9 +357,6 @@
     <div class="footer-grid">
       <div class="footer-col footer-col-logo">
         <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
-      </div>
-      <div class="footer-col">
-        <h4>Menú</h4>
         <a href="https://sophiamx.org" target="_blank">Home</a>
         <a href="https://sophiamx.org/sophia" target="_blank">Sophia</a>
         <a href="https://sophiamx.org/estudia" target="_blank">Estudia</a>
@@ -369,7 +369,7 @@
         <p>Akadem:<br>Río Suchiate 722, Zona Tampiquito,<br>Lomas del Valle, 66256<br>San Pedro Garza García</p>
         <br>
         <h4>Contacto</h4>
-        <p>+52 81 1988 1581<br><a href="mailto:contacto@sophiamx.org">contacto@sophiamx.org</a></p>
+        <p>+52 81 1988 1581<br><a href="/cdn-cgi/l/email-protection#4a2925243e2b293e250a39253a22232b27326425382d"><span class="__cf_email__" data-cfemail="0f6c60617b6e6c7b604f7c607f67666e627721607d68">[email&#160;protected]</span></a></p>
         <br>
         <a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.86em;color:#777;">Política de Privacidad</a>
       </div>
@@ -395,7 +395,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const axes = [
       { name: "Estética Existencial",   icon: "https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color: "#e3a52d", key: "esteticaExistencial", start: -60, end:   0, iconSize: 72 },
       { name: "Fe y filosofía de vida", icon: "https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color: "#e3a52d", key: "feFilosofia",         start:   0, end:  60, iconSize: 52 },
@@ -582,12 +582,4 @@
           `<div class="card"><h3 style="color:${a.color}">${a.name}</h3><p>${analisis[a.key]||'Análisis pendiente...'}</p></div>`
         ).join('');
       }
-      document.getElementById('fortaleza-content').innerHTML   = cards(fortaleza);
-      document.getElementById('crecimiento-content').innerHTML = cards(crecimiento);
-      document.getElementById('vulnerable-content').innerHTML  = cards(vulnerable);
-    }
-
-    loadData();
-  </script>
-</body>
-</html>
+      document.getElementById('fortaleza-content').inner
