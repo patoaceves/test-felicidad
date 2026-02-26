@@ -431,14 +431,32 @@
       svg.appendChild(g);
       var pos=midIconPos(axis.start,axis.end);
       var sz = axis.iconSize * scale;
-      var img=ns('image');
-      img.setAttribute('href',axis.icon);
-      img.setAttribute('x', pos.x-sz/2);
-      img.setAttribute('y', pos.y-sz/2);
-      img.setAttribute('width',sz);
-      img.setAttribute('height',sz);
-      img.classList.add('icon-img'); img.id='icon-'+i;
-      svg.appendChild(img);
+      // Fe y filosofía: ícono inline en lugar de imagen externa
+      if (i === 1) {
+        var iconG = ns('g');
+        iconG.classList.add('icon-img'); iconG.id='icon-'+i;
+        iconG.setAttribute('transform', 'translate('+pos.x+','+pos.y+')');
+        // Cruz simple blanca
+        var vBar = ns('rect');
+        vBar.setAttribute('x', -4); vBar.setAttribute('y', -18);
+        vBar.setAttribute('width', 8); vBar.setAttribute('height', 36);
+        vBar.setAttribute('rx', 3); vBar.setAttribute('fill', 'white');
+        var hBar = ns('rect');
+        hBar.setAttribute('x', -14); hBar.setAttribute('y', -6);
+        hBar.setAttribute('width', 28); hBar.setAttribute('height', 8);
+        hBar.setAttribute('rx', 3); hBar.setAttribute('fill', 'white');
+        iconG.appendChild(vBar); iconG.appendChild(hBar);
+        svg.appendChild(iconG);
+      } else {
+        var img=ns('image');
+        img.setAttribute('href',axis.icon);
+        img.setAttribute('x', pos.x-sz/2);
+        img.setAttribute('y', pos.y-sz/2);
+        img.setAttribute('width',sz);
+        img.setAttribute('height',sz);
+        img.classList.add('icon-img'); img.id='icon-'+i;
+        svg.appendChild(img);
+      }
     }
     var c=ns('circle');
     c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR);
