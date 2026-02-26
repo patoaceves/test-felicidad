@@ -23,25 +23,73 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* HEADER */
-    #header {
-      text-align: center;
-      padding: 40px 20px 10px;
-      opacity: 0; transition: opacity 0.6s ease;
+    /* HERO: rueda + texto lado a lado */
+    #hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 40px 20px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
     }
-    #header.show { opacity: 1; }
-    #header h1 { font-weight: 300; font-size: 1.6em; color: #1a1a1a; }
-    #header p  { font-weight: 300; font-size: 1em; color: #666; margin-top: 6px; }
+    #hero.show { opacity: 1; }
+
+    #wheel-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      flex-shrink: 0;
+      aspect-ratio: 1;
+    }
+    #wheel-wrap svg { width: 100%; height: 100%; }
+
+    #intro-text {
+      max-width: 380px;
+    }
+    #intro-text h1 {
+      font-weight: 500;
+      font-size: 2em;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    #intro-text p {
+      font-weight: 300;
+      font-size: 1em;
+      line-height: 1.8;
+      color: #444;
+    }
+    #nombre-texto {
+      font-weight: 400;
+      font-size: 0.85em;
+      color: #999;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Divisor vertical */
+    #intro-text::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 60px;
+      background: #e3a52d;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      #hero {
+        flex-direction: column;
+        padding: 20px;
+      }
+      #wheel-wrap { max-width: 100%; }
+      #intro-text { max-width: 100%; }
+    }
 
     /* RUEDA */
-    #wheel-section {
-      display: flex; justify-content: center;
-      padding: 20px;
-      opacity: 0; transition: opacity 0.6s ease;
-    }
-    #wheel-section.show { opacity: 1; }
-    #wheel-wrap { position: relative; width: 100%; max-width: 560px; aspect-ratio: 1; }
-    #wheel-wrap svg { width: 100%; height: 100%; }
     .segment-group { cursor: pointer; }
     .segment-empty { fill: #f0f0f0; stroke: white; stroke-width: 3; }
     .segment-filled { stroke: white; stroke-width: 3; transition: filter 0.3s ease; }
@@ -60,13 +108,16 @@
     .tooltip-score { color: #666; font-size: 13px; }
 
     /* BLOQUES */
-    #bloques-section { padding: 10px 20px 40px; }
+    #bloques-section { padding: 10px 40px 60px; }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 20px;
     }
-    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      #bloques-section { padding: 10px 20px 40px; }
+    }
     .column {
       border-radius: 18px; padding: 24px 18px;
       opacity: 0; transform: translateY(40px);
@@ -100,20 +151,20 @@
   <!-- LOADER -->
   <div id="loader"><div class="spinner"></div></div>
 
-  <!-- HEADER -->
-  <div id="header">
-    <h1 id="nombre-texto">Tu diagnóstico de bienestar</h1>
-    <p>Aquí tienes tu mapa de vida actual</p>
-  </div>
-
-  <!-- RUEDA -->
-  <div id="wheel-section">
+  <!-- HERO: rueda + texto -->
+  <div id="hero">
     <div id="wheel-wrap">
       <svg id="wheel" viewBox="0 0 500 500"></svg>
       <div class="tooltip" id="tooltip">
         <div class="tooltip-title"></div>
         <div class="tooltip-score"></div>
       </div>
+    </div>
+
+    <div id="intro-text">
+      <p id="nombre-texto"></p>
+      <h1>Tus resultados</h1>
+      <p>Cada respuesta que compartiste refleja una parte de tu historia. Con base en el Modelo de Felicidad, analizamos cómo se relacionan los 8 elementos esenciales en tu vida actual. Este reporte busca darte claridad sobre tus fortalezas y mostrarte hacia dónde puedes dirigir tu crecimiento personal.</p>
     </div>
   </div>
 
@@ -136,7 +187,6 @@
   </div>
 
   <script>
-    // ─── CONFIG ───────────────────────────────────────────────
     const axes = [
       { name: "Estética Existencial",   icon: "https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color: "#e3a52d", key: "esteticaExistencial", start: -60, end:   0, iconSize: 72 },
       { name: "Fe y filosofía de vida", icon: "https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color: "#e3a52d", key: "feFilosofia",         start:   0, end:  60, iconSize: 52 },
@@ -162,17 +212,14 @@
     const cx = 250, cy = 250, outerR = 220, innerR = 80;
     let currentScores = {};
 
-    // ─── FETCH DATA ───────────────────────────────────────────
     async function loadData() {
       const params = new URLSearchParams(window.location.search);
       const recordId = params.get('record');
-
       if (!recordId) {
         document.getElementById('nombre-texto').textContent = 'No se encontró el registro';
-        hideLoder();
+        hideLoader();
         return;
       }
-
       try {
         const res = await fetch(`/api/dashboard?recordId=${recordId}`);
         if (!res.ok) throw new Error('Error cargando datos');
@@ -188,23 +235,17 @@
     function renderAll(data) {
       currentScores = data.scores;
 
-      // Nombre
       if (data.nombre) {
         document.getElementById('nombre-texto').textContent =
-          `Hola ${data.nombre}, aquí está tu diagnóstico de bienestar`;
+          `Hola, ${data.nombre} ${data.apellidos || ''}`.trim();
       }
 
-      // Rueda
       generateWheel();
       animateSegments();
-
-      // Bloques
       renderBloques(data.scores, data.analisis);
 
-      // Mostrar secciones
       hideLoader();
-      setTimeout(() => document.getElementById('header').classList.add('show'), 100);
-      setTimeout(() => document.getElementById('wheel-section').classList.add('show'), 300);
+      setTimeout(() => document.getElementById('hero').classList.add('show'), 100);
       setTimeout(() => document.getElementById('col-vulnerable').classList.add('show'), 1800);
       setTimeout(() => document.getElementById('col-crecimiento').classList.add('show'), 2200);
       setTimeout(() => document.getElementById('col-fortaleza').classList.add('show'), 2600);
@@ -216,7 +257,6 @@
       setTimeout(() => loader.style.display = 'none', 500);
     }
 
-    // ─── RUEDA ────────────────────────────────────────────────
     function seg(iR, oR, sA, eA) {
       const s = (sA - 90) * Math.PI / 180;
       const e = (eA - 90) * Math.PI / 180;
@@ -329,7 +369,6 @@
       });
     }
 
-    // ─── BLOQUES ──────────────────────────────────────────────
     function renderBloques(scores, analisis) {
       const vulnerable  = axesList.filter(a => scores[a.key] >= 1 && scores[a.key] <= 4);
       const crecimiento = axesList.filter(a => scores[a.key] >= 5 && scores[a.key] <= 7);
@@ -347,7 +386,6 @@
       document.getElementById('fortaleza-content').innerHTML   = cards(fortaleza);
     }
 
-    // ─── INIT ─────────────────────────────────────────────────
     loadData();
   </script>
 </body>
