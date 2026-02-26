@@ -4,40 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test de Felicidad — Sophia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600&family=Poltawski+Nowy:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&family=Poltawski+Nowy:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Karla', sans-serif; background: white; color: #1a1a1a; }
 
-    /* ── HEADER ── */
+    /* ══ HEADER ══ */
     #site-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 95px;
+      padding: 0 48px; height: 95px;
       border-bottom: 1px solid #f0ebe6;
       background: #FFFCFA;
       position: sticky; top: 0; z-index: 100;
     }
     #site-header .logo { display: flex; align-items: center; text-decoration: none; }
-    #site-header .logo img { height: 65px; }
+    #site-header .logo img { height: 70px; }
     #site-header nav { display: flex; gap: 28px; align-items: center; }
     #site-header nav a {
-      text-decoration: none; font-size: 0.82em; font-weight: 500;
+      text-decoration: none; font-size: 0.82em; font-weight: 400;
       color: #c0112f; text-transform: uppercase; letter-spacing: 0.08em;
       transition: opacity 0.2s;
     }
-    #site-header nav a:hover { opacity: 0.7; }
+    #site-header nav a:hover { opacity: 0.65; }
     #site-header .btn-contact {
-      background: #c0112f; color: white; border-radius: 8px;
+      background: #c0112f; color: white !important; border-radius: 8px;
       padding: 11px 22px; font-size: 0.82em; font-weight: 600;
-      text-decoration: none; transition: background 0.2s;
+      text-decoration: none; transition: background 0.2s; white-space: nowrap;
     }
     #site-header .btn-contact:hover { background: #a00f27; }
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       #site-header { padding: 0 20px; }
       #site-header nav { display: none; }
     }
 
-    /* ── LOADER sobre la rueda ── */
+    /* ══ LOADER ══ */
     #wheel-loader {
       position: absolute; inset: 0; background: white;
       display: flex; flex-direction: column;
@@ -48,538 +48,535 @@
     #wheel-loader.hide { opacity: 0; pointer-events: none; }
     .spinner-ring {
       width: 70px; height: 70px; border-radius: 50%;
-      background: conic-gradient(#E74C3C, #9B59B6, #E91E63, #FF6B9D, #F39C12, #3498DB, #1ABC9C, #27AE60, #E74C3C);
+      background: conic-gradient(#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60,#E74C3C);
       animation: spin 1.2s linear infinite; position: relative;
     }
-    .spinner-ring::before {
-      content: ''; position: absolute; inset: 5px;
-      border-radius: 50%; background: white;
-    }
+    .spinner-ring::before { content:''; position:absolute; inset:5px; border-radius:50%; background:white; }
     .spinner-ring::after {
-      content: '😊'; position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%); font-size: 26px; z-index: 1;
-      animation: counter-spin 1.2s linear infinite;
+      content:'😊'; position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%); font-size:26px; z-index:1;
+      animation:counter-spin 1.2s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes counter-spin { to { transform: translate(-50%, -50%) rotate(-360deg); } }
-    .loader-text { font-size: 13px; font-weight: 600; color: #333; text-align: center; }
-    .dots::after { content: ''; animation: dots 1.5s steps(4, end) infinite; }
-    @keyframes dots {
-      0%  { content: ''; } 25% { content: '.'; }
-      50% { content: '..'; } 75% { content: '...'; } 100% { content: ''; }
-    }
-    .progress-bar { width: 130px; height: 4px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes counter-spin { to { transform:translate(-50%,-50%) rotate(-360deg); } }
+    .loader-text { font-size:13px; font-weight:500; color:#333; text-align:center; }
+    .dots::after { content:''; animation:dots 1.5s steps(4,end) infinite; }
+    @keyframes dots { 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} 100%{content:'';} }
+    .progress-bar { width:130px; height:4px; background:#f0f0f0; border-radius:4px; overflow:hidden; }
     .progress-fill {
-      height: 100%; width: 0%; border-radius: 4px;
-      background: linear-gradient(90deg, #E74C3C, #9B59B6, #E91E63, #FF6B9D, #F39C12, #3498DB, #1ABC9C, #27AE60);
-      background-size: 200% 100%;
-      animation: fill 3s ease-in-out forwards, gradient-shift 1.5s ease infinite;
+      height:100%; width:0%; border-radius:4px;
+      background:linear-gradient(90deg,#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60);
+      background-size:200% 100%;
+      animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite;
     }
-    @keyframes fill { to { width: 100%; } }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; }
-    }
+    @keyframes fill { to { width:100%; } }
+    @keyframes gshift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
 
-    /* ── HERO ── */
+    /* ══ HERO ══ */
     #hero {
-      display: flex; align-items: center; justify-content: center;
-      gap: 50px; padding: 50px 60px 30px;
+      display:flex; align-items:center; justify-content:center;
+      gap:50px; padding:50px 60px 30px;
     }
     #wheel-wrap {
-      position: relative; width: 100%; max-width: 576px;
-      flex-shrink: 0; aspect-ratio: 1;
+      position:relative; width:100%; max-width:576px;
+      flex-shrink:0; aspect-ratio:1;
     }
-    #wheel-wrap svg { width: 100%; height: 100%; }
-    #intro-text { max-width: 360px; }
+    #wheel-wrap svg { width:100%; height:100%; }
+    #intro-text { max-width:360px; }
     #intro-text::before {
-      content: ''; display: block; width: 3px; height: 60px;
-      background: #c0112f; margin-bottom: 20px; border-radius: 2px;
+      content:''; display:block; width:3px; height:60px;
+      background:#c0112f; margin-bottom:20px; border-radius:2px;
     }
     #nombre-texto {
-      font-weight: 400; font-size: 0.85em; color: #999;
-      margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.1em;
+      font-weight:400; font-size:0.85em; color:#999;
+      margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em;
     }
     #intro-text h1 {
-      font-family: 'Poltawski Nowy', serif;
-      font-weight: 700; font-size: 2em; color: #1a1a1a;
-      margin-bottom: 16px; line-height: 1.2;
+      font-family:'Poltawski Nowy', serif; font-weight:700;
+      font-size:2em; color:#1a1a1a; margin-bottom:16px; line-height:1.2;
     }
-    #intro-text p { font-weight: 300; font-size: 1em; line-height: 1.8; color: #444; }
-    @media (max-width: 900px) {
-      #hero { flex-direction: column; padding: 24px 20px; gap: 24px; }
-      #wheel-wrap { max-width: 100%; }
-      #intro-text { max-width: 100%; }
+    #intro-text p { font-weight:300; font-size:1em; line-height:1.8; color:#444; }
+    @media (max-width:900px) {
+      #hero { flex-direction:column; padding:24px 20px; gap:24px; }
+      #wheel-wrap { max-width:100%; }
+      #intro-text { max-width:100%; }
     }
 
-    /* ── RUEDA ── */
-    .segment-group { cursor: pointer; }
-    .segment-empty { fill: #f0f0f0; stroke: white; stroke-width: 3; }
-    .segment-filled { stroke: white; stroke-width: 3; transition: filter 0.3s ease; }
-    .segment-group:hover .segment-filled { filter: brightness(1.15); }
-    .center-circle { fill: white; }
-    .icon-img { pointer-events: none; user-select: none; opacity: 0; transition: opacity 0.4s ease; }
-    .icon-img.visible { opacity: 1; }
+    /* ══ RUEDA ══ */
+    .segment-group { cursor:pointer; }
+    .segment-empty { fill:#f0f0f0; stroke:white; stroke-width:3; }
+    .segment-filled { stroke:white; stroke-width:3; transition:filter 0.3s ease; }
+    .segment-group:hover .segment-filled { filter:brightness(1.15); }
+    .center-circle { fill:white; }
+    .icon-img { pointer-events:none; user-select:none; opacity:0; transition:opacity 0.4s ease; }
+    .icon-img.visible { opacity:1; }
     .tooltip {
-      position: fixed; background: white; color: #333; padding: 12px 16px;
-      border-radius: 8px; font-size: 14px; pointer-events: none; opacity: 0;
-      transition: opacity 0.3s ease; z-index: 1000; max-width: 250px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 2px solid #e0e0e0;
+      position:fixed; background:white; color:#333; padding:12px 16px;
+      border-radius:8px; font-size:14px; pointer-events:none; opacity:0;
+      transition:opacity 0.3s ease; z-index:1000; max-width:250px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15); border:2px solid #e0e0e0;
     }
-    .tooltip.active { opacity: 1; }
-    .tooltip-title { font-weight: bold; margin-bottom: 4px; font-size: 15px; }
-    .tooltip-score { color: #666; font-size: 13px; }
+    .tooltip.active { opacity:1; }
+    .tooltip-title { font-weight:bold; margin-bottom:4px; font-size:15px; }
+    .tooltip-score { color:#666; font-size:13px; }
 
-    /* ── BLOQUES ── */
-    #bloques-section { padding: 10px 60px 50px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: 1fr; }
-      #bloques-section { padding: 10px 20px 30px; }
+    /* ══ BLOQUES ══ */
+    #bloques-section { padding:10px 60px 50px; }
+    .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+    @media (max-width:768px) {
+      .grid { grid-template-columns:1fr; }
+      #bloques-section { padding:10px 20px 30px; }
     }
     .column {
-      border-radius: 18px; padding: 24px 18px;
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      border-radius:18px; padding:24px 18px;
+      opacity:0; transform:translateY(40px);
+      transition:opacity 0.6s ease, transform 0.6s ease;
     }
-    .column.show { opacity: 1; transform: translateY(0); }
-    .column.vulnerable  { background: linear-gradient(160deg, #fce4e4, #fef2f2); }
-    .column.crecimiento { background: linear-gradient(160deg, #fef3cd, #fffbeb); }
-    .column.fortaleza   { background: linear-gradient(160deg, #d1fae5, #f0fdf4); }
+    .column.show { opacity:1; transform:translateY(0); }
+    .column.fortaleza   { background:linear-gradient(160deg,#d1fae5,#f0fdf4); }
+    .column.crecimiento { background:linear-gradient(160deg,#fef3cd,#fffbeb); }
+    .column.vulnerable  { background:linear-gradient(160deg,#fce4e4,#fef2f2); }
     .column-title {
-      font-weight: 400; font-size: 1em; text-transform: uppercase;
-      letter-spacing: 0.12em; margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      font-weight:400; font-size:1em; text-transform:uppercase;
+      letter-spacing:0.12em; margin-bottom:16px; padding-bottom:10px;
+      border-bottom:1px solid rgba(0,0,0,0.08);
     }
-    .vulnerable  .column-title { color: #dc2626; }
-    .crecimiento .column-title { color: #d97706; }
-    .fortaleza   .column-title { color: #059669; }
+    .fortaleza   .column-title { color:#059669; }
+    .crecimiento .column-title { color:#d97706; }
+    .vulnerable  .column-title { color:#dc2626; }
     .card {
-      background: white; border-radius: 14px; padding: 20px; margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background:white; border-radius:14px; padding:20px; margin-bottom:14px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.07); transition:transform 0.2s, box-shadow 0.2s;
     }
-    .card:last-child { margin-bottom: 0; }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
-    .card h3 { font-weight: 500; font-size: 0.95em; margin-bottom: 8px; }
-    .card p  { font-weight: 300; font-size: 0.9em; line-height: 1.7; color: #333; }
-    .empty-msg { font-weight: 300; font-size: 0.88em; color: rgba(0,0,0,0.35); text-align: center; padding: 30px 10px; }
+    .card:last-child { margin-bottom:0; }
+    .card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,0.1); }
+    .card h3 { font-weight:500; font-size:0.95em; margin-bottom:8px; }
+    .card p  { font-weight:300; font-size:0.9em; line-height:1.7; color:#333; }
+    .empty-msg { font-weight:300; font-size:0.88em; color:rgba(0,0,0,0.35); text-align:center; padding:30px 10px; }
 
-    /* ── QUÉ SIGUE ── */
-    #que-sigue {
-      border-top: 1px solid #e8e8e8;
-      padding: 60px;
-    }
+    /* ══ QUÉ SIGUE ══ */
+    #que-sigue { border-top:1px solid #e8e8e8; padding:60px; }
     #que-sigue h2 {
-      font-family: 'Poltawski Nowy', serif;
-      font-size: 2.5em; font-weight: 700; color: #1a1a1a;
-      margin-bottom: 16px;
+      font-family:'Poltawski Nowy', serif; font-weight:700;
+      font-size:2.5em; color:#1a1a1a; margin-bottom:16px;
     }
     #que-sigue p {
-      font-weight: 300; font-size: 1.05em; line-height: 1.8;
-      color: #444; max-width: 780px;
+      font-weight:300; font-size:1.05em; line-height:1.8; color:#444; max-width:780px;
     }
-    @media (max-width: 768px) {
-      #que-sigue { padding: 40px 20px; }
-      #que-sigue h2 { font-size: 1.8em; }
+    @media (max-width:768px) {
+      #que-sigue { padding:40px 20px; }
+      #que-sigue h2 { font-size:1.9em; }
     }
 
-    /* ── SHARE ── */
+    /* ══ SHARE ══ */
     #share-section {
-      padding: 70px 60px; text-align: center;
-      border-top: 1px solid #e8e8e8;
-      background: #FFFCFA;
+      padding:70px 60px; text-align:center;
+      border-top:1px solid #e8e8e8; background:#FFFCFA;
     }
     #share-section h3 {
-      font-weight: 400; font-size: 0.85em; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #aaa; margin-bottom: 10px;
+      font-weight:400; font-size:0.82em; text-transform:uppercase;
+      letter-spacing:0.14em; color:#bbb; margin-bottom:10px;
     }
     #share-section h2 {
-      font-weight: 500; font-size: 1.5em; color: #1a1a1a; margin-bottom: 30px;
+      font-weight:500; font-size:1.5em; color:#1a1a1a; margin-bottom:32px;
     }
-    .share-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .share-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
     .share-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 28px; border-radius: 10px; font-size: 0.95em;
-      font-weight: 500; text-decoration: none; font-family: 'Karla', sans-serif;
-      cursor: pointer; border: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:13px 26px; border-radius:10px; font-size:0.92em;
+      font-weight:500; text-decoration:none; font-family:'Karla',sans-serif;
+      cursor:pointer; border:none; white-space:nowrap;
+      transition:transform 0.15s, box-shadow 0.15s;
     }
-    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
-    .share-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
-    .share-wa   { background: #25D366; color: white; }
-    .share-fb   { background: #1877F2; color: white; }
-    .share-mail { background: white; color: #333; border: 1.5px solid #ddd; }
-    @media (max-width: 768px) {
-      #share-section { padding: 50px 20px; }
-      .share-buttons { flex-direction: column; align-items: center; }
-      .share-btn { width: 260px; justify-content: center; }
+    .share-btn:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.14); }
+    .share-btn svg { width:20px; height:20px; flex-shrink:0; }
+    .share-wa   { background:#25D366; color:white; }
+    .share-fb   { background:#1877F2; color:white; }
+    .share-mail { background:white; color:#333; border:1.5px solid #ddd; }
+    @media (max-width:768px) {
+      #share-section { padding:50px 20px; }
+      .share-buttons { flex-direction:column; align-items:center; }
     }
 
-    /* ── FOOTER ── */
-    #site-footer { background: #f5f5f5; padding: 50px 60px 30px; }
+    /* ══ FOOTER ══ */
+    #site-footer { background:#f5f5f5; padding:52px 60px 32px; }
     .footer-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 40px; margin-bottom: 40px;
+      display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
+      gap:48px; margin-bottom:40px; align-items:start;
     }
-    .footer-col-logo img { height: 50px; margin-bottom: 16px; display: block; }
+
+    /* Columna 1: logo + menú */
+    .footer-brand img { height:60px; display:block; margin-bottom:20px; }
+    .footer-brand a {
+      display:block; text-decoration:none; color:#333;
+      font-size:0.86em; font-weight:400; margin-bottom:10px;
+      text-transform:uppercase; letter-spacing:0.07em; transition:color 0.2s;
+    }
+    .footer-brand a:hover { color:#c0112f; }
+
+    /* Columnas interiores */
     .footer-col h4 {
-      font-size: 0.72em; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: #999; margin-bottom: 16px;
+      font-size:0.72em; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.12em; color:#aaa; margin-bottom:14px;
     }
-    .footer-col a {
-      display: block; text-decoration: none; color: #333;
-      font-size: 0.88em; font-weight: 500; margin-bottom: 10px;
-      text-transform: uppercase; letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: #c0112f; }
-    .footer-col p { font-size: 0.86em; color: #555; line-height: 1.7; }
-    .footer-col p a {
-      display: inline; margin-bottom: 0; color: #c0112f;
-      text-transform: none; letter-spacing: 0; font-weight: 400;
-    }
-    .social-icons { display: flex; gap: 12px; margin-bottom: 20px; }
+    .footer-col p { font-size:0.86em; color:#555; line-height:1.75; }
+    .footer-col p a { color:#c0112f; text-decoration:none; }
+
+    /* Columna redes */
+    .social-icons { display:flex; gap:12px; margin-bottom:20px; }
     .social-icons a {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: #c0112f;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; transition: background 0.2s;
+      width:38px; height:38px; border-radius:50%; background:#c0112f;
+      display:flex; align-items:center; justify-content:center;
+      text-decoration:none; transition:background 0.2s; flex-shrink:0;
     }
-    .social-icons a:hover { background: #a00f27; }
-    .social-icons svg { width: 17px; height: 17px; fill: white; }
-    .footer-btn-contact {
-      display: inline-block; background: #c0112f; color: white !important;
-      border-radius: 8px; padding: 11px 22px;
-      font-size: 0.82em; font-weight: 600; text-decoration: none;
-      font-family: 'Karla', sans-serif;
-      transition: background 0.2s;
-      text-transform: none; letter-spacing: normal;
-      margin-top: 4px;
+    .social-icons a:hover { background:#a00f27; }
+    .social-icons svg { width:17px; height:17px; fill:white; }
+
+    /* Botón Contáctanos footer — idéntico al del header */
+    .footer-btn {
+      display:inline-block; background:#c0112f; color:white;
+      border-radius:8px; padding:11px 22px;
+      font-size:0.82em; font-weight:600; font-family:'Karla',sans-serif;
+      text-decoration:none; white-space:nowrap; transition:background 0.2s;
     }
-    .footer-btn-contact:hover { background: #a00f27 !important; }
+    .footer-btn:hover { background:#a00f27; }
+
     .footer-bottom {
-      border-top: 1px solid #ddd; padding-top: 20px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.78em; color: #aaa;
+      border-top:1px solid #ddd; padding-top:20px;
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:0.78em; color:#aaa;
     }
-    .footer-bottom a { color: #aaa; text-decoration: none; transition: color 0.2s; }
-    .footer-bottom a:hover { color: #c0112f; }
-    @media (max-width: 768px) {
-      #site-footer { padding: 36px 20px 24px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .footer-bottom a { color:#aaa; text-decoration:none; transition:color 0.2s; }
+    .footer-bottom a:hover { color:#c0112f; }
+    @media (max-width:768px) {
+      #site-footer { padding:36px 20px 24px; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:28px; }
+      .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══ HEADER ══ -->
-  <header id="site-header">
-    <a class="logo" href="https://sophiamx.org" target="_blank">
-      <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
+<!-- ══ HEADER ══ -->
+<header id="site-header">
+  <a class="logo" href="https://sophiamx.org" target="_blank">
+    <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
+  </a>
+  <nav>
+    <a href="https://sophiamx.org" target="_blank">Home</a>
+    <a href="https://sophiamx.org/sophia" target="_blank">Sophia</a>
+    <a href="https://sophiamx.org/estudia" target="_blank">Estudia</a>
+    <a href="https://sophiamx.org/coaching" target="_blank">Coaching</a>
+    <a href="https://sophiamx.org/embajadores" target="_blank">Embajadores</a>
+    <a href="https://sophiamx.org/consultoria" target="_blank">Consultoría</a>
+    <a class="btn-contact" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<div id="hero">
+  <div id="wheel-wrap">
+    <div id="wheel-loader">
+      <div class="spinner-ring"></div>
+      <div class="loader-text">Preparando tu Diagrama<span class="dots"></span></div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+    </div>
+    <svg id="wheel" viewBox="0 0 500 500"></svg>
+    <div class="tooltip" id="tooltip">
+      <div class="tooltip-title"></div>
+      <div class="tooltip-score"></div>
+    </div>
+  </div>
+  <div id="intro-text">
+    <p id="nombre-texto"></p>
+    <h1>Tus resultados</h1>
+    <p>Cada respuesta que compartiste refleja una parte de tu historia. Con base en el Modelo de Felicidad, analizamos cómo se relacionan los 8 elementos esenciales en tu vida actual. Este reporte busca darte claridad sobre tus fortalezas y mostrarte hacia dónde puedes dirigir tu crecimiento personal.</p>
+  </div>
+</div>
+
+<!-- ══ BLOQUES ══ -->
+<div id="bloques-section">
+  <div class="grid">
+    <div class="column fortaleza" id="col-fortaleza">
+      <div class="column-title">Fortaleza Actual</div>
+      <div id="fortaleza-content"></div>
+    </div>
+    <div class="column crecimiento" id="col-crecimiento">
+      <div class="column-title">Zonas de Crecimiento</div>
+      <div id="crecimiento-content"></div>
+    </div>
+    <div class="column vulnerable" id="col-vulnerable">
+      <div class="column-title">Área Vulnerable</div>
+      <div id="vulnerable-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUÉ SIGUE ══ -->
+<div id="que-sigue">
+  <h2>¿Qué sigue?</h2>
+  <p>Suena fácil, pero descubrir tu propósito no es solo cuestión de llenar un formulario como lo hiciste. Requiere herramientas, acompañamiento y tiempo, y eso es justamente lo que hacemos en SOPHIA.</p>
+</div>
+
+<!-- ══ SHARE ══ -->
+<div id="share-section">
+  <h3>¿Te identificaste con tus resultados?</h3>
+  <h2>Comparte tus resultados</h2>
+  <div class="share-buttons">
+    <a class="share-btn share-wa" id="btn-wa" href="#" target="_blank">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Compartir en WhatsApp
     </a>
-    <nav>
+    <a class="share-btn share-fb" id="btn-fb" href="#" target="_blank">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Compartir en Facebook
+    </a>
+    <a class="share-btn share-mail" id="btn-mail" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Enviar por Email
+    </a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer id="site-footer">
+  <div class="footer-grid">
+
+    <!-- Col 1: logo + menú -->
+    <div class="footer-brand">
+      <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
       <a href="https://sophiamx.org" target="_blank">Home</a>
       <a href="https://sophiamx.org/sophia" target="_blank">Sophia</a>
       <a href="https://sophiamx.org/estudia" target="_blank">Estudia</a>
       <a href="https://sophiamx.org/coaching" target="_blank">Coaching</a>
       <a href="https://sophiamx.org/embajadores" target="_blank">Embajadores</a>
       <a href="https://sophiamx.org/consultoria" target="_blank">Consultoría</a>
-      <a class="btn-contact" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
-    </nav>
-  </header>
+    </div>
 
-  <!-- ══ HERO ══ -->
-  <div id="hero">
-    <div id="wheel-wrap">
-      <div id="wheel-loader">
-        <div class="spinner-ring"></div>
-        <div class="loader-text">Preparando tu Diagrama<span class="dots"></span></div>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
-      </div>
-      <svg id="wheel" viewBox="0 0 500 500"></svg>
-      <div class="tooltip" id="tooltip">
-        <div class="tooltip-title"></div>
-        <div class="tooltip-score"></div>
-      </div>
+    <!-- Col 2: sede -->
+    <div class="footer-col">
+      <h4>Sede Principal</h4>
+      <p>Akadem:<br>Río Suchiate 722, Zona Tampiquito,<br>Lomas del Valle, 66256<br>San Pedro Garza García</p>
     </div>
-    <div id="intro-text">
-      <p id="nombre-texto"></p>
-      <h1>Tus resultados</h1>
-      <p>Cada respuesta que compartiste refleja una parte de tu historia. Con base en el Modelo de Felicidad, analizamos cómo se relacionan los 8 elementos esenciales en tu vida actual. Este reporte busca darte claridad sobre tus fortalezas y mostrarte hacia dónde puedes dirigir tu crecimiento personal.</p>
+
+    <!-- Col 3: contacto -->
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>+52 81 1988 1581<br><a href="mailto:contacto@sophiamx.org">contacto@sophiamx.org</a></p>
+      <br>
+      <p><a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="color:#999;font-size:0.9em;">Política de Privacidad</a></p>
     </div>
+
+    <!-- Col 4: redes + botón -->
+    <div class="footer-col">
+      <h4>Redes Sociales</h4>
+      <div class="social-icons">
+        <a href="https://instagram.com/sophiamx" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://facebook.com/sophiamx" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/sophiamx" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+      <a class="footer-btn" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
+    </div>
+
   </div>
-
-  <!-- ══ BLOQUES: fortaleza → crecimiento → vulnerable ══ -->
-  <div id="bloques-section">
-    <div class="grid">
-      <div class="column fortaleza" id="col-fortaleza">
-        <div class="column-title">Fortaleza Actual</div>
-        <div id="fortaleza-content"></div>
-      </div>
-      <div class="column crecimiento" id="col-crecimiento">
-        <div class="column-title">Zonas de Crecimiento</div>
-        <div id="crecimiento-content"></div>
-      </div>
-      <div class="column vulnerable" id="col-vulnerable">
-        <div class="column-title">Área Vulnerable</div>
-        <div id="vulnerable-content"></div>
-      </div>
-    </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sophia. Todos los derechos reservados.</span>
+    <a href="https://sophiamx.org/politica-de-privacidad" target="_blank">Política de Privacidad</a>
   </div>
+</footer>
 
-  <!-- ══ QUÉ SIGUE ══ -->
-  <div id="que-sigue">
-    <h2>¿Qué sigue?</h2>
-    <p>Suena fácil, pero descubrir tu propósito no es solo cuestión de llenar un formulario como lo hiciste. Requiere herramientas, acompañamiento y tiempo, y eso es justamente lo que hacemos en SOPHIA.</p>
-  </div>
+<script>
+  const axes = [
+    { name:"Estética Existencial",   icon:"https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color:"#e3a52d", key:"esteticaExistencial",  start:-60,  end:0,   iconSize:72 },
+    { name:"Fe y filosofía de vida", icon:"https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color:"#e3a52d", key:"feFilosofia",          start:0,    end:60,  iconSize:52 },
+    { name:"Vínculos vitales",       icon:"https://static.wixstatic.com/shapes/78c590_6f901ef444bb4acdbe7910e1061f9673.svg", color:"#d21744", key:"vinculosVitales",     start:60,   end:120, iconSize:72 },
+    { name:"Bienestar emocional",    icon:"https://static.wixstatic.com/shapes/78c590_58bbd84251a948709d0532c5dcfc3051.svg", color:"#d21744", key:"bienestarEmocional",  start:120,  end:150, iconSize:52 },
+    { name:"Bienestar físico",       icon:"https://static.wixstatic.com/shapes/78c590_a807fec0f1de43f488df9dcbdf3f644f.svg", color:"#8d9438", key:"bienestarFisico",     start:150,  end:180, iconSize:72 },
+    { name:"Presencia consciente",   icon:"https://static.wixstatic.com/shapes/78c590_ecf22bbada3b4b1eba0f3b9451d78d93.svg", color:"#8d9438", key:"presenciaConsciente", start:180,  end:210, iconSize:58 },
+    { name:"Autoconocimiento",       icon:"https://static.wixstatic.com/shapes/78c590_4e807ff266b5441580a7493fdbd357ce.svg", color:"#66a3f4", key:"autoconocimiento",    start:210,  end:240, iconSize:72 },
+    { name:"Trabajo con propósito",  icon:"https://static.wixstatic.com/shapes/78c590_83f9521fe52a416cb539deeacb3d3289.svg", color:"#66a3f4", key:"trabajoPropósito",   start:240,  end:300, iconSize:52 }
+  ];
 
-  <!-- ══ SHARE ══ -->
-  <div id="share-section">
-    <h3>¿Te identificaste con tus resultados?</h3>
-    <h2>Comparte tus resultados</h2>
-    <div class="share-buttons">
-      <a class="share-btn share-wa" id="btn-wa" href="#" target="_blank">
-        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Compartir en WhatsApp
-      </a>
-      <a class="share-btn share-fb" id="btn-fb" href="#" target="_blank">
-        <svg viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Compartir en Facebook
-      </a>
-      <a class="share-btn share-mail" id="btn-mail" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Enviar por Email
-      </a>
-    </div>
-  </div>
+  const axesList = [
+    { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#F39C12' },
+    { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#E91E63' },
+    { name:'Bienestar Físico',      key:'bienestarFisico',     color:'#E74C3C' },
+    { name:'Presencia Consciente',  key:'presenciaConsciente', color:'#9B59B6' },
+    { name:'Vínculos Vitales',      key:'vinculosVitales',     color:'#FF6B9D' },
+    { name:'Trabajo con Propósito', key:'trabajoPropósito',    color:'#3498DB' },
+    { name:'Estética Existencial',  key:'esteticaExistencial', color:'#1ABC9C' },
+    { name:'Fe y Filosofía',        key:'feFilosofia',         color:'#27AE60' }
+  ];
 
-  <!-- ══ FOOTER ══ -->
-  <footer id="site-footer">
-    <div class="footer-grid">
-      <div class="footer-col footer-col-logo">
-        <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
-        <a href="https://sophiamx.org" target="_blank">Home</a>
-        <a href="https://sophiamx.org/sophia" target="_blank">Sophia</a>
-        <a href="https://sophiamx.org/estudia" target="_blank">Estudia</a>
-        <a href="https://sophiamx.org/coaching" target="_blank">Coaching</a>
-        <a href="https://sophiamx.org/embajadores" target="_blank">Embajadores</a>
-        <a href="https://sophiamx.org/consultoria" target="_blank">Consultoría</a>
-      </div>
-      <div class="footer-col">
-        <h4>Sede Principal</h4>
-        <p>Akadem:<br>Río Suchiate 722, Zona Tampiquito,<br>Lomas del Valle, 66256<br>San Pedro Garza García</p>
-        <br>
-        <h4>Contacto</h4>
-        <p>+52 81 1988 1581<br><a href="/cdn-cgi/l/email-protection#4a2925243e2b293e250a39253a22232b27326425382d"><span class="__cf_email__" data-cfemail="0f6c60617b6e6c7b604f7c607f67666e627721607d68">[email&#160;protected]</span></a></p>
-        <br>
-        <a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:0.86em;color:#777;">Política de Privacidad</a>
-      </div>
-      <div class="footer-col">
-        <h4>Redes Sociales</h4>
-        <div class="social-icons">
-          <a href="https://instagram.com/sophiamx" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://facebook.com/sophiamx" target="_blank" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://linkedin.com/company/sophiamx" target="_blank" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-        <a class="footer-btn-contact" href="https://sophiamx.org/contacto" target="_blank">Contáctanos</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Sophia. Todos los derechos reservados.</span>
-      <a href="https://sophiamx.org/politica-de-privacidad" target="_blank">Política de Privacidad</a>
-    </div>
-  </footer>
+  const cx=250, cy=250, outerR=220, innerR=80;
+  let currentScores={};
+  window._loadStart = Date.now();
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const axes = [
-      { name: "Estética Existencial",   icon: "https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color: "#e3a52d", key: "esteticaExistencial", start: -60, end:   0, iconSize: 72 },
-      { name: "Fe y filosofía de vida", icon: "https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color: "#e3a52d", key: "feFilosofia",         start:   0, end:  60, iconSize: 52 },
-      { name: "Vínculos vitales",       icon: "https://static.wixstatic.com/shapes/78c590_6f901ef444bb4acdbe7910e1061f9673.svg", color: "#d21744", key: "vinculosVitales",    start:  60, end: 120, iconSize: 72 },
-      { name: "Bienestar emocional",    icon: "https://static.wixstatic.com/shapes/78c590_58bbd84251a948709d0532c5dcfc3051.svg", color: "#d21744", key: "bienestarEmocional", start: 120, end: 150, iconSize: 52 },
-      { name: "Bienestar físico",       icon: "https://static.wixstatic.com/shapes/78c590_a807fec0f1de43f488df9dcbdf3f644f.svg", color: "#8d9438", key: "bienestarFisico",    start: 150, end: 180, iconSize: 72 },
-      { name: "Presencia consciente",   icon: "https://static.wixstatic.com/shapes/78c590_ecf22bbada3b4b1eba0f3b9451d78d93.svg", color: "#8d9438", key: "presenciaConsciente",start: 180, end: 210, iconSize: 58 },
-      { name: "Autoconocimiento",       icon: "https://static.wixstatic.com/shapes/78c590_4e807ff266b5441580a7493fdbd357ce.svg", color: "#66a3f4", key: "autoconocimiento",   start: 210, end: 240, iconSize: 72 },
-      { name: "Trabajo con propósito",  icon: "https://static.wixstatic.com/shapes/78c590_83f9521fe52a416cb539deeacb3d3289.svg", color: "#66a3f4", key: "trabajoPropósito",  start: 240, end: 300, iconSize: 52 }
-    ];
-
-    const axesList = [
-      { name: 'Autoconocimiento',      key: 'autoconocimiento',    color: '#F39C12' },
-      { name: 'Bienestar Emocional',   key: 'bienestarEmocional',  color: '#E91E63' },
-      { name: 'Bienestar Físico',      key: 'bienestarFisico',     color: '#E74C3C' },
-      { name: 'Presencia Consciente',  key: 'presenciaConsciente', color: '#9B59B6' },
-      { name: 'Vínculos Vitales',      key: 'vinculosVitales',     color: '#FF6B9D' },
-      { name: 'Trabajo con Propósito', key: 'trabajoPropósito',    color: '#3498DB' },
-      { name: 'Estética Existencial',  key: 'esteticaExistencial', color: '#1ABC9C' },
-      { name: 'Fe y Filosofía',        key: 'feFilosofia',         color: '#27AE60' }
-    ];
-
-    const cx = 250, cy = 250, outerR = 220, innerR = 80;
-    let currentScores = {};
-    window._loadStart = Date.now();
-
-    async function loadData() {
-      const params = new URLSearchParams(window.location.search);
-      const recordId = params.get('record');
-      if (!recordId) {
-        document.getElementById('nombre-texto').textContent = 'No se encontró el registro';
-        hideLoader();
-        return;
-      }
-      try {
-        const res = await fetch(`/api/dashboard?recordId=${recordId}`);
-        if (!res.ok) throw new Error('Error');
-        const data = await res.json();
-        renderAll(data);
-      } catch (e) {
-        console.error(e);
-        document.getElementById('nombre-texto').textContent = 'Error cargando tu diagnóstico';
-        hideLoader();
-      }
+  async function loadData() {
+    const params = new URLSearchParams(window.location.search);
+    const recordId = params.get('record');
+    if (!recordId) {
+      document.getElementById('nombre-texto').textContent = 'No se encontró el registro';
+      hideLoader();
+      return;
     }
-
-    function renderAll(data) {
-      currentScores = data.scores;
-      if (data.nombre) {
-        document.getElementById('nombre-texto').textContent =
-          `Hola, ${data.nombre} ${data.apellidos || ''}`.trim();
-      }
-      generateWheel();
-      renderBloques(data.scores, data.analisis);
-      setupShareButtons();
-
-      const delay = Math.max(0, 3000 - (Date.now() - window._loadStart));
-      setTimeout(() => {
-        hideLoader();
-        animateSegments();
-        setTimeout(() => document.getElementById('col-fortaleza').classList.add('show'), 1800);
-        setTimeout(() => document.getElementById('col-crecimiento').classList.add('show'), 2200);
-        setTimeout(() => document.getElementById('col-vulnerable').classList.add('show'), 2600);
-      }, delay);
+    try {
+      const res = await fetch(`/api/dashboard?recordId=${recordId}`);
+      if (!res.ok) throw new Error('Error');
+      const data = await res.json();
+      renderAll(data);
+    } catch(e) {
+      console.error(e);
+      document.getElementById('nombre-texto').textContent = 'Error cargando tu diagnóstico';
+      hideLoader();
     }
+  }
 
-    function hideLoader() {
-      const loader = document.getElementById('wheel-loader');
-      loader.classList.add('hide');
-      setTimeout(() => loader.style.display = 'none', 500);
+  function renderAll(data) {
+    currentScores = data.scores;
+    if (data.nombre) {
+      document.getElementById('nombre-texto').textContent =
+        `Hola, ${data.nombre} ${data.apellidos||''}`.trim();
     }
+    generateWheel();
+    renderBloques(data.scores, data.analisis);
+    setupShareButtons();
+    const delay = Math.max(0, 3000-(Date.now()-window._loadStart));
+    setTimeout(() => {
+      hideLoader();
+      animateSegments();
+      setTimeout(()=>document.getElementById('col-fortaleza').classList.add('show'), 1800);
+      setTimeout(()=>document.getElementById('col-crecimiento').classList.add('show'), 2200);
+      setTimeout(()=>document.getElementById('col-vulnerable').classList.add('show'), 2600);
+    }, delay);
+  }
 
-    function setupShareButtons() {
-      const url   = encodeURIComponent(window.location.href);
-      const texto = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
-      // WhatsApp: texto + URL
-      document.getElementById('btn-wa').href =
-        `https://wa.me/?text=${texto}%20${url}`;
-      // Facebook: url + quote (el parámetro quote no es oficial pero funciona en algunos casos)
-      document.getElementById('btn-fb').href =
-        `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${texto}`;
-      // Email
-      document.getElementById('btn-mail').href =
-        `mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad%20%E2%80%94%20Sophia&body=${texto}%0A%0A${url}`;
-    }
+  function hideLoader() {
+    const loader = document.getElementById('wheel-loader');
+    loader.classList.add('hide');
+    setTimeout(()=>loader.style.display='none', 500);
+  }
 
-    function seg(iR, oR, sA, eA) {
-      const s=(sA-90)*Math.PI/180, e=(eA-90)*Math.PI/180;
-      const x1o=cx+oR*Math.cos(s), y1o=cy+oR*Math.sin(s);
-      const x2o=cx+oR*Math.cos(e), y2o=cy+oR*Math.sin(e);
-      const x1i=cx+iR*Math.cos(s), y1i=cy+iR*Math.sin(s);
-      const x2i=cx+iR*Math.cos(e), y2i=cy+iR*Math.sin(e);
-      const lg=(eA-sA+360)%360>180?1:0;
-      return `M ${x1o} ${y1o} A ${oR} ${oR} 0 ${lg} 1 ${x2o} ${y2o} L ${x2i} ${y2i} A ${iR} ${iR} 0 ${lg} 0 ${x1i} ${y1i} Z`;
-    }
+  function setupShareButtons() {
+    const url   = encodeURIComponent(window.location.href);
+    const texto = encodeURIComponent('¡Acabo de ver mis resultados del Test de Felicidad de Sophia! 😊');
+    document.getElementById('btn-wa').href  = `https://wa.me/?text=${texto}%20${url}`;
+    document.getElementById('btn-fb').href  = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${texto}`;
+    document.getElementById('btn-mail').href= `mailto:?subject=Mis%20resultados%20del%20Test%20de%20Felicidad%20%E2%80%94%20Sophia&body=${texto}%0A%0A${url}`;
+  }
 
-    function midIconPos(sA, eA) {
-      const mid=sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
-      const r=innerR+(outerR-innerR)*0.5;
-      return {x:cx+r*Math.cos(rad), y:cy+r*Math.sin(rad)};
-    }
+  function seg(iR,oR,sA,eA) {
+    const s=(sA-90)*Math.PI/180, e=(eA-90)*Math.PI/180;
+    const x1o=cx+oR*Math.cos(s), y1o=cy+oR*Math.sin(s);
+    const x2o=cx+oR*Math.cos(e), y2o=cy+oR*Math.sin(e);
+    const x1i=cx+iR*Math.cos(s), y1i=cy+iR*Math.sin(s);
+    const x2i=cx+iR*Math.cos(e), y2i=cy+iR*Math.sin(e);
+    const lg=(eA-sA+360)%360>180?1:0;
+    return `M ${x1o} ${y1o} A ${oR} ${oR} 0 ${lg} 1 ${x2o} ${y2o} L ${x2i} ${y2i} A ${iR} ${iR} 0 ${lg} 0 ${x1i} ${y1i} Z`;
+  }
 
-    function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg', tag); }
+  function midIconPos(sA,eA) {
+    const mid=sA+(eA-sA)/2, rad=(mid-90)*Math.PI/180;
+    const r=innerR+(outerR-innerR)*0.5;
+    return {x:cx+r*Math.cos(rad), y:cy+r*Math.sin(rad)};
+  }
 
-    function generateWheel() {
-      const svg = document.getElementById('wheel');
-      svg.innerHTML = '';
-      axes.forEach((axis, i) => {
-        const g = ns('g'); g.classList.add('segment-group'); g.dataset.index = i;
-        const empty = ns('path');
-        empty.setAttribute('d', seg(innerR, outerR, axis.start, axis.end));
-        empty.classList.add('segment-empty'); g.appendChild(empty);
-        const filled = ns('path');
-        filled.setAttribute('d', seg(innerR, innerR+1, axis.start, axis.end));
-        filled.setAttribute('fill', axis.color); filled.classList.add('segment-filled');
-        filled.id = `filled-${i}`; g.appendChild(filled);
-        svg.appendChild(g);
-        const pos = midIconPos(axis.start, axis.end);
-        const img = ns('image');
-        img.setAttribute('href', axis.icon);
-        img.setAttribute('x', pos.x - axis.iconSize/2);
-        img.setAttribute('y', pos.y - axis.iconSize/2);
-        img.setAttribute('width', axis.iconSize);
-        img.setAttribute('height', axis.iconSize);
-        img.classList.add('icon-img'); img.id = `icon-${i}`;
-        svg.appendChild(img);
+  function ns(tag) { return document.createElementNS('http://www.w3.org/2000/svg',tag); }
+
+  function generateWheel() {
+    const svg=document.getElementById('wheel');
+    svg.innerHTML='';
+    axes.forEach((axis,i)=>{
+      const g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
+      const empty=ns('path');
+      empty.setAttribute('d', seg(innerR,outerR,axis.start,axis.end));
+      empty.classList.add('segment-empty'); g.appendChild(empty);
+      const filled=ns('path');
+      filled.setAttribute('d', seg(innerR,innerR+1,axis.start,axis.end));
+      filled.setAttribute('fill',axis.color); filled.classList.add('segment-filled');
+      filled.id=`filled-${i}`; g.appendChild(filled);
+      svg.appendChild(g);
+      const pos=midIconPos(axis.start,axis.end);
+      const img=ns('image');
+      img.setAttribute('href',axis.icon);
+      img.setAttribute('x', pos.x-axis.iconSize/2);
+      img.setAttribute('y', pos.y-axis.iconSize/2);
+      img.setAttribute('width',axis.iconSize);
+      img.setAttribute('height',axis.iconSize);
+      img.classList.add('icon-img'); img.id=`icon-${i}`;
+      svg.appendChild(img);
+    });
+    const c=ns('circle');
+    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR);
+    c.classList.add('center-circle'); svg.appendChild(c);
+    setupTooltips();
+  }
+
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+
+  function animateSegments() {
+    const duration=1200,stagger=120,t0=performance.now();
+    function frame(now) {
+      let done=true;
+      axes.forEach((axis,i)=>{
+        const elapsed=now-t0-i*stagger;
+        if(elapsed<0){done=false;return;}
+        const p=Math.min(elapsed/duration,1), e=easeOutCubic(p);
+        const score=currentScores[axis.key]||0;
+        const targetR=innerR+(outerR-innerR)*(score/10);
+        const curR=innerR+(targetR-innerR)*e;
+        const fp=document.getElementById(`filled-${i}`);
+        if(fp) fp.setAttribute('d',seg(innerR,curR,axis.start,axis.end));
+        if(p>0.5){const ic=document.getElementById(`icon-${i}`);if(ic)ic.classList.add('visible');}
+        if(p<1) done=false;
       });
-      const c = ns('circle');
-      c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', innerR);
-      c.classList.add('center-circle'); svg.appendChild(c);
-      setupTooltips();
+      if(!done) requestAnimationFrame(frame);
     }
+    requestAnimationFrame(frame);
+  }
 
-    function easeOutCubic(t) { return 1-Math.pow(1-t,3); }
-
-    function animateSegments() {
-      const duration=1200, stagger=120, t0=performance.now();
-      function frame(now) {
-        let done=true;
-        axes.forEach((axis,i) => {
-          const elapsed=now-t0-i*stagger;
-          if(elapsed<0){done=false;return;}
-          const p=Math.min(elapsed/duration,1), e=easeOutCubic(p);
-          const score=currentScores[axis.key]||0;
-          const targetR=innerR+(outerR-innerR)*(score/10);
-          const curR=innerR+(targetR-innerR)*e;
-          const fp=document.getElementById(`filled-${i}`);
-          if(fp) fp.setAttribute('d', seg(innerR,curR,axis.start,axis.end));
-          if(p>0.5){const ic=document.getElementById(`icon-${i}`);if(ic)ic.classList.add('visible');}
-          if(p<1) done=false;
-        });
-        if(!done) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    }
-
-    function setupTooltips() {
-      const tooltip=document.getElementById('tooltip');
-      document.querySelectorAll('.segment-group').forEach(g => {
-        g.addEventListener('mouseenter', e => {
-          const i=parseInt(e.currentTarget.dataset.index);
-          const t=tooltip.querySelector('.tooltip-title');
-          t.textContent=axes[i].name; t.style.color=axes[i].color;
-          tooltip.querySelector('.tooltip-score').textContent=`Puntuación: ${currentScores[axes[i].key]||0}/10`;
-          tooltip.classList.add('active');
-        });
-        g.addEventListener('mousemove', e => {
-          let l=e.clientX+15, t=e.clientY+15;
-          if(l+250>window.innerWidth) l=e.clientX-265;
-          if(t+80>window.innerHeight) t=e.clientY-95;
-          tooltip.style.left=l+'px'; tooltip.style.top=t+'px';
-        });
-        g.addEventListener('mouseleave',()=>tooltip.classList.remove('active'));
+  function setupTooltips() {
+    const tooltip=document.getElementById('tooltip');
+    document.querySelectorAll('.segment-group').forEach(g=>{
+      g.addEventListener('mouseenter',e=>{
+        const i=parseInt(e.currentTarget.dataset.index);
+        const t=tooltip.querySelector('.tooltip-title');
+        t.textContent=axes[i].name; t.style.color=axes[i].color;
+        tooltip.querySelector('.tooltip-score').textContent=`Puntuación: ${currentScores[axes[i].key]||0}/10`;
+        tooltip.classList.add('active');
       });
-    }
+      g.addEventListener('mousemove',e=>{
+        let l=e.clientX+15,t=e.clientY+15;
+        if(l+250>window.innerWidth) l=e.clientX-265;
+        if(t+80>window.innerHeight) t=e.clientY-95;
+        tooltip.style.left=l+'px'; tooltip.style.top=t+'px';
+      });
+      g.addEventListener('mouseleave',()=>tooltip.classList.remove('active'));
+    });
+  }
 
-    function renderBloques(scores, analisis) {
-      const fortaleza   = axesList.filter(a=>scores[a.key]>=8&&scores[a.key]<=10);
-      const crecimiento = axesList.filter(a=>scores[a.key]>=5&&scores[a.key]<=7);
-      const vulnerable  = axesList.filter(a=>scores[a.key]>=1&&scores[a.key]<=4);
-      function cards(items) {
-        if(!items.length) return '<div class="empty-msg">Sin ejes en este rango</div>';
-        return items.map(a=>
-          `<div class="card"><h3 style="color:${a.color}">${a.name}</h3><p>${analisis[a.key]||'Análisis pendiente...'}</p></div>`
-        ).join('');
-      }
-      document.getElementById('fortaleza-content').inner
+  function renderBloques(scores,analisis) {
+    const fortaleza   = axesList.filter(a=>scores[a.key]>=8&&scores[a.key]<=10);
+    const crecimiento = axesList.filter(a=>scores[a.key]>=5&&scores[a.key]<=7);
+    const vulnerable  = axesList.filter(a=>scores[a.key]>=1&&scores[a.key]<=4);
+    function cards(items) {
+      if(!items.length) return '<div class="empty-msg">Sin ejes en este rango</div>';
+      return items.map(a=>
+        `<div class="card"><h3 style="color:${a.color}">${a.name}</h3><p>${analisis[a.key]||'Análisis pendiente...'}</p></div>`
+      ).join('');
+    }
+    document.getElementById('fortaleza-content').innerHTML   = cards(fortaleza);
+    document.getElementById('crecimiento-content').innerHTML = cards(crecimiento);
+    document.getElementById('vulnerable-content').innerHTML  = cards(vulnerable);
+  }
+
+  loadData();
+</script>
+</body>
+</html>
