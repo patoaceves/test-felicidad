@@ -9,17 +9,18 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Karla', sans-serif; background: white; }
 
-    /* LOADER */
-    #loader {
-      position: fixed; inset: 0; background: white;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 999; transition: opacity 0.5s ease;
-    }
-    #loader.hide { opacity: 0; pointer-events: none; }
-    .loader-container {
+    /* LOADER — solo sobre la rueda */
+    #wheel-loader {
+      position: absolute; inset: 0;
+      background: white;
       display: flex; flex-direction: column;
-      align-items: center; gap: 28px;
+      align-items: center; justify-content: center;
+      gap: 28px;
+      z-index: 10;
+      border-radius: 50%;
+      transition: opacity 0.5s ease;
     }
+    #wheel-loader.hide { opacity: 0; pointer-events: none; }
     .spinner-ring {
       width: 70px; height: 70px; border-radius: 50%;
       background: conic-gradient(#E74C3C, #9B59B6, #E91E63, #FF6B9D, #F39C12, #3498DB, #1ABC9C, #27AE60, #E74C3C);
@@ -40,7 +41,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     @keyframes counter-spin { to { transform: translate(-50%, -50%) rotate(-360deg); } }
     .loader-text {
-      font-size: 18px; font-weight: 600; color: #333;
+      font-size: 14px; font-weight: 600; color: #333;
       text-align: center; letter-spacing: 0.3px;
     }
     .dots::after {
@@ -52,7 +53,7 @@
       100% { content: ''; }
     }
     .progress-bar {
-      width: 200px; height: 4px; background: #f0f0f0;
+      width: 140px; height: 4px; background: #f0f0f0;
       border-radius: 4px; overflow: hidden;
     }
     .progress-fill {
@@ -74,10 +75,7 @@
       justify-content: center;
       gap: 40px;
       padding: 40px 40px 20px;
-      opacity: 0;
-      transition: opacity 0.6s ease;
     }
-    #hero.show { opacity: 1; }
 
     #wheel-wrap {
       position: relative;
@@ -192,18 +190,15 @@
 </head>
 <body>
 
-  <!-- LOADER -->
-  <div id="loader">
-    <div class="loader-container">
-      <div class="spinner-ring"></div>
-      <div class="loader-text">Preparando tu Diagrama de Felicidad<span class="dots"></span></div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-    </div>
-  </div>
-
   <!-- HERO: rueda + texto -->
   <div id="hero">
     <div id="wheel-wrap">
+      <!-- LOADER solo sobre la rueda -->
+      <div id="wheel-loader">
+        <div class="spinner-ring"></div>
+        <div class="loader-text">Preparando tu Diagrama<span class="dots"></span></div>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </div>
       <svg id="wheel" viewBox="0 0 500 500"></svg>
       <div class="tooltip" id="tooltip">
         <div class="tooltip-title"></div>
@@ -262,6 +257,8 @@
     const cx = 250, cy = 250, outerR = 220, innerR = 80;
     let currentScores = {};
 
+    window._loadStart = Date.now();
+
     async function loadData() {
       const params = new URLSearchParams(window.location.search);
       const recordId = params.get('record');
@@ -291,18 +288,24 @@
       }
 
       generateWheel();
-      animateSegments();
       renderBloques(data.scores, data.analisis);
 
-      hideLoader();
-      setTimeout(() => document.getElementById('hero').classList.add('show'), 100);
-      setTimeout(() => document.getElementById('col-vulnerable').classList.add('show'), 1800);
-      setTimeout(() => document.getElementById('col-crecimiento').classList.add('show'), 2200);
-      setTimeout(() => document.getElementById('col-fortaleza').classList.add('show'), 2600);
+      // Esperar mínimo 3 segundos antes de ocultar el loader y animar la rueda
+      const MIN_LOADER_TIME = 3000;
+      const elapsed = Date.now() - window._loadStart;
+      const delay = Math.max(0, MIN_LOADER_TIME - elapsed);
+
+      setTimeout(() => {
+        hideLoader();
+        animateSegments();
+        setTimeout(() => document.getElementById('col-vulnerable').classList.add('show'), 1800);
+        setTimeout(() => document.getElementById('col-crecimiento').classList.add('show'), 2200);
+        setTimeout(() => document.getElementById('col-fortaleza').classList.add('show'), 2600);
+      }, delay);
     }
 
     function hideLoader() {
-      const loader = document.getElementById('loader');
+      const loader = document.getElementById('wheel-loader');
       loader.classList.add('hide');
       setTimeout(() => loader.style.display = 'none', 500);
     }
