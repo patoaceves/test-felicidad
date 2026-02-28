@@ -49,7 +49,7 @@
     #wheel-loader.hide { opacity:0; pointer-events:none; }
     .spinner-ring {
       width:70px; height:70px; border-radius:50%;
-      background:conic-gradient(#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60,#E74C3C);
+      background:conic-gradient(#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe,#fd7c65);
       animation:spin 1.2s linear infinite; position:relative;
     }
     .spinner-ring::before { content:''; position:absolute; inset:5px; border-radius:50%; background:white; }
@@ -66,7 +66,7 @@
     .progress-bar { width:130px; height:4px; background:#f0f0f0; border-radius:4px; overflow:hidden; }
     .progress-fill {
       height:100%; width:0%; border-radius:4px;
-      background:linear-gradient(90deg,#E74C3C,#9B59B6,#E91E63,#FF6B9D,#F39C12,#3498DB,#1ABC9C,#27AE60);
+      background:linear-gradient(90deg,#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe);
       background-size:200% 100%;
       animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite;
     }
@@ -324,26 +324,76 @@
 </footer>
 
 <script>
+  // ══ AXES — updated colors and icons ══
   const axes = [
-    { name:"Estética Existencial",   icon:"https://static.wixstatic.com/shapes/78c590_a8a2fefdc0f64827888353657479b65c.svg", color:"#e3a52d", key:"esteticaExistencial",  start:-60, end:0,   iconSize:72 },
-    { name:"Fe y filosofía de vida", icon:"https://static.wixstatic.com/shapes/78c590_62b9f44c30bb43d5b33b168c4059a2c3.svg", color:"#e3a52d", key:"feFilosofia",          start:0,   end:60,  iconSize:38 },
-    { name:"Vínculos vitales",       icon:"https://static.wixstatic.com/shapes/78c590_6f901ef444bb4acdbe7910e1061f9673.svg", color:"#d21744", key:"vinculosVitales",     start:60,  end:120, iconSize:72 },
-    { name:"Bienestar emocional",    icon:"https://static.wixstatic.com/shapes/78c590_58bbd84251a948709d0532c5dcfc3051.svg", color:"#d21744", key:"bienestarEmocional",  start:120, end:150, iconSize:52 },
-    { name:"Bienestar físico",       icon:"https://static.wixstatic.com/shapes/78c590_a807fec0f1de43f488df9dcbdf3f644f.svg", color:"#8d9438", key:"bienestarFisico",     start:150, end:180, iconSize:72 },
-    { name:"Presencia consciente",   icon:"https://static.wixstatic.com/shapes/78c590_ecf22bbada3b4b1eba0f3b9451d78d93.svg", color:"#8d9438", key:"presenciaConsciente", start:180, end:210, iconSize:58 },
-    { name:"Autoconocimiento",       icon:"https://static.wixstatic.com/shapes/78c590_4e807ff266b5441580a7493fdbd357ce.svg", color:"#66a3f4", key:"autoconocimiento",    start:210, end:240, iconSize:72 },
-    { name:"Trabajo con propósito",  icon:"https://static.wixstatic.com/shapes/78c590_83f9521fe52a416cb539deeacb3d3289.svg", color:"#66a3f4", key:"trabajoPropósito",   start:240, end:300, iconSize:52 }
+    {
+      name:"Estética Existencial",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a77eaf08dbe3.png",
+      color:"#fd7c65",
+      key:"esteticaExistencial",
+      start:-60, end:0, iconSize:72
+    },
+    {
+      name:"Fe y filosofía de vida",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c167da426a66ac37b.png",
+      color:"#e39dff",
+      key:"feFilosofia",
+      start:0, end:60, iconSize:52
+    },
+    {
+      name:"Vínculos vitales",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c6741fbbfe6.png",
+      color:"#ffae9e",
+      key:"vinculosVitales",
+      start:60, end:120, iconSize:72
+    },
+    {
+      name:"Bienestar emocional",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c36dbfbbfe7.png",
+      color:"#ffcb3c",
+      key:"bienestarEmocional",
+      start:120, end:150, iconSize:52
+    },
+    {
+      name:"Bienestar físico",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd81fc129b408.png",
+      color:"#ff9e3c",
+      key:"bienestarFisico",
+      start:150, end:180, iconSize:72
+    },
+    {
+      name:"Presencia consciente",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd8640a29b409.png",
+      color:"#9ac48e",
+      key:"presenciaConsciente",
+      start:180, end:210, iconSize:58
+    },
+    {
+      name:"Autoconocimiento",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a75ead08dbe2.png",
+      color:"#7f94fe",
+      key:"autoconocimiento",
+      start:210, end:240, iconSize:72
+    },
+    {
+      name:"Trabajo con propósito",
+      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c753f1555552a60ab.png",
+      color:"#82beff",
+      key:"trabajoPropósito",
+      start:240, end:300, iconSize:52
+    }
   ];
 
+  // ══ AXES LIST — updated colors ══
   const axesList = [
-    { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#F39C12' },
-    { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#E91E63' },
-    { name:'Bienestar Físico',      key:'bienestarFisico',     color:'#E74C3C' },
-    { name:'Presencia Consciente',  key:'presenciaConsciente', color:'#9B59B6' },
-    { name:'Vínculos Vitales',      key:'vinculosVitales',     color:'#FF6B9D' },
-    { name:'Trabajo con Propósito', key:'trabajoPropósito',    color:'#3498DB' },
-    { name:'Estética Existencial',  key:'esteticaExistencial', color:'#1ABC9C' },
-    { name:'Fe y Filosofía',        key:'feFilosofia',         color:'#27AE60' }
+    { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#7f94fe' },
+    { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#ffcb3c' },
+    { name:'Bienestar Físico',      key:'bienestarFisico',     color:'#ff9e3c' },
+    { name:'Presencia Consciente',  key:'presenciaConsciente', color:'#9ac48e' },
+    { name:'Vínculos Vitales',      key:'vinculosVitales',     color:'#ffae9e' },
+    { name:'Trabajo con Propósito', key:'trabajoPropósito',    color:'#82beff' },
+    { name:'Estética Existencial',  key:'esteticaExistencial', color:'#fd7c65' },
+    { name:'Fe y Filosofía',        key:'feFilosofia',         color:'#e39dff' }
   ];
 
   const cx=250, cy=250, outerR=220, innerR=80;
@@ -426,50 +476,43 @@
     svg.innerHTML='';
     var isMobile = window.innerWidth < 600;
     var scale = isMobile ? 1.13 : 1;
+
     for (var i=0; i<axes.length; i++) {
       var axis=axes[i];
       var g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
+
+      // Empty background segment
       var empty=ns('path');
       empty.setAttribute('d', seg(innerR,outerR,axis.start,axis.end));
       empty.classList.add('segment-empty'); g.appendChild(empty);
+
+      // Filled score segment
       var filled=ns('path');
       filled.setAttribute('d', seg(innerR,innerR+1,axis.start,axis.end));
       filled.setAttribute('fill',axis.color); filled.classList.add('segment-filled');
       filled.id='filled-'+i; g.appendChild(filled);
+
       svg.appendChild(g);
+
+      // Icon image (all axes now use PNG icons)
       var pos=midIconPos(axis.start,axis.end);
       var sz = axis.iconSize * scale;
-      // Fe y filosofía (i===1): path inline sin filtros de sombra
-      if (i === 1) {
-        var s2 = 52 * scale;
-        var iconG = ns('g');
-        iconG.classList.add('icon-img'); iconG.id='icon-'+i;
-        // viewBox 1565x1466 → escalar a s2×s2, centrar en pos
-        var scaleX = s2 / 1565;
-        var scaleY = s2 / 1466;
-        var offsetX = pos.x - s2/2;
-        var offsetY = pos.y - s2/2;
-        iconG.setAttribute('transform', 'translate('+offsetX+','+offsetY+') scale('+scaleX+','+scaleY+')');
-        var p = ns('path');
-        p.setAttribute('fill','white');
-        p.setAttribute('d','m1278.28 719.414-32.73 74.404c-59.64-27.44-133.53-63.147-149.71-96.919-35.89-75.459-46.98-198.059-57.71-316.612-8.62-95.512-16.71-185.746-37.3-261.03C979.896 43.622 922.542-2.99 855.16 0c-27.269 1.231-52.076 10.906-72.836 26.56C761.74 10.73 736.758 1.231 709.488 0c-67.558-2.99-124.56 43.622-145.672 119.433-20.584 75.108-28.677 165.342-37.297 260.854-10.732 118.553-21.816 241.153-57.53 316.612-16.186 33.772-90.077 69.479-149.719 96.919l-32.723-74.404L4 843.948 274.232 1458l282.723-124.18-24.103-54.88c132.829-33.25 207.6-86.72 249.648-133.51 41.872 46.79 116.819 100.26 249.65 133.51l-24.1 54.88L1290.77 1458 1561 843.948zM331.938 1310.07 152.135 901.466l77.234-33.948L409.172 1276.3l-77.058 33.77zm391.625-277.56c-7.917 18.99-52.076 100.61-236.629 141.95L364.661 896.541c82.512-37.994 172.414-81.616 205.841-151.447 44.511-93.576 56.474-226.377 68.085-354.781 8.093-90.411 15.834-175.896 33.779-240.977 6.51-23.219 18.825-37.466 32.02-37.114 9.852.527 17.945 9.322 21.464 23.218l-2.287 896.89zm117.874.53-2.287-897.424c3.519-14.072 11.436-22.867 21.464-23.219 13.019-.879 25.686 13.896 32.02 36.939 17.945 65.433 25.686 150.918 33.779 241.329 11.611 128.403 23.574 261.205 68.085 354.957 33.432 69.655 123.332 113.277 205.842 151.271l-122.27 277.917c-186.844-41.87-229.771-124.89-236.633-141.42zm391.623 277.03L1156 1276.3l179.81-408.782 77.23 33.948-179.8 408.604z');
-        iconG.appendChild(p);
-        svg.appendChild(iconG);
-      } else {
-        var img=ns('image');
-        img.setAttribute('href',axis.icon);
-        var xOff = (i === 6) ? -12 : 0;
-        img.setAttribute('x', pos.x-sz/2+xOff);
-        img.setAttribute('y', pos.y-sz/2);
-        img.setAttribute('width',sz);
-        img.setAttribute('height',sz);
-        img.classList.add('icon-img'); img.id='icon-'+i;
-        svg.appendChild(img);
-      }
+      var img=ns('image');
+      img.setAttribute('href', axis.icon);
+      var xOff = (i === 6) ? -12 : 0;
+      img.setAttribute('x', pos.x - sz/2 + xOff);
+      img.setAttribute('y', pos.y - sz/2);
+      img.setAttribute('width', sz);
+      img.setAttribute('height', sz);
+      img.classList.add('icon-img'); img.id='icon-'+i;
+      svg.appendChild(img);
     }
+
+    // Center white circle
     var c=ns('circle');
     c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR);
     c.classList.add('center-circle'); svg.appendChild(c);
+
     setupTooltips();
   }
 
