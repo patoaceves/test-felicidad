@@ -9,94 +9,39 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Karla',sans-serif; background:white; color:#1a1a1a; }
-
-    /* ══ HEADER ══ */
-    #site-header {
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 48px; height:95px;
-      border-bottom:none;
-      background:#FFFCFA;
-      position:sticky; top:0; z-index:100;
-    }
+    #site-header { display:flex; align-items:center; justify-content:space-between; padding:0 48px; height:95px; border-bottom:none; background:#FFFCFA; position:sticky; top:0; z-index:100; }
     #site-header .logo { display:flex; align-items:center; text-decoration:none; }
     #site-header .logo img { height:118px; }
     #site-header nav { display:flex; gap:28px; align-items:center; }
-    #site-header nav a {
-      text-decoration:none; font-size:1em; font-weight:400;
-      color:#c0112f; text-transform:uppercase; letter-spacing:0.08em;
-      transition:opacity 0.2s;
-    }
+    #site-header nav a { text-decoration:none; font-size:1em; font-weight:400; color:#c0112f; text-transform:uppercase; letter-spacing:0.08em; transition:opacity 0.2s; }
     #site-header nav a:hover { opacity:0.65; }
-    #site-header .btn-contact {
-      background:#c0112f; color:white; border-radius:8px;
-      padding:11px 22px; font-size:0.82em; font-weight:600;
-      text-decoration:none; transition:background 0.2s; white-space:nowrap;
-    }
+    #site-header .btn-contact { background:#c0112f; color:white; border-radius:8px; padding:11px 22px; font-size:0.82em; font-weight:600; text-decoration:none; transition:background 0.2s; white-space:nowrap; }
     #site-header .btn-contact:hover { background:#a00f27; }
-    @media (max-width:960px) {
-      #site-header { padding:0 20px; }
-      #site-header nav { display:none; }
-    }
-
-    /* ══ LOADER ══ */
-    #wheel-loader {
-      position:absolute; inset:0; background:white;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      gap:28px; z-index:10; border-radius:50%;
-      transition:opacity 0.5s ease;
-    }
+    @media (max-width:960px) { #site-header { padding:0 20px; } #site-header nav { display:none; } }
+    #wheel-loader { position:absolute; inset:0; background:white; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; z-index:10; border-radius:50%; transition:opacity 0.5s ease; }
     #wheel-loader.hide { opacity:0; pointer-events:none; }
-    .spinner-ring {
-      width:70px; height:70px; border-radius:50%;
-      background:conic-gradient(#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe,#fd7c65);
-      animation:spin 1.2s linear infinite; position:relative;
-    }
+    .spinner-ring { width:70px; height:70px; border-radius:50%; background:conic-gradient(#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe,#fd7c65); animation:spin 1.2s linear infinite; position:relative; }
     .spinner-ring::before { content:''; position:absolute; inset:5px; border-radius:50%; background:white; }
-    .spinner-ring::after {
-      content:'😊'; position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%); font-size:26px; z-index:1;
-      animation:counter-spin 1.2s linear infinite;
-    }
+    .spinner-ring::after { content:'😊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:26px; z-index:1; animation:counter-spin 1.2s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
     @keyframes counter-spin { to { transform:translate(-50%,-50%) rotate(-360deg); } }
     .loader-text { font-size:13px; font-weight:500; color:#333; text-align:center; }
     .dots::after { content:''; animation:dots 1.5s steps(4,end) infinite; }
     @keyframes dots { 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} 100%{content:'';} }
     .progress-bar { width:130px; height:4px; background:#f0f0f0; border-radius:4px; overflow:hidden; }
-    .progress-fill {
-      height:100%; width:0%; border-radius:4px;
-      background:linear-gradient(90deg,#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe);
-      background-size:200% 100%;
-      animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite;
-    }
+    .progress-fill { height:100%; width:0%; border-radius:4px; background:linear-gradient(90deg,#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe); background-size:200% 100%; animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite; }
     @keyframes fill { to { width:100%; } }
     @keyframes gshift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
-
-    /* ══ HERO ══ */
     #hero { display:flex; align-items:center; justify-content:center; gap:50px; padding:50px 60px 30px; }
     #wheel-wrap { position:relative; width:100%; max-width:576px; flex-shrink:0; aspect-ratio:1; }
     #wheel-wrap svg { width:100%; height:100%; }
     #intro-text { max-width:360px; }
-    #intro-text::before {
-      content:''; display:block; width:3px; height:60px;
-      background:#c0112f; margin-bottom:20px; border-radius:2px;
-    }
+    #intro-text::before { content:''; display:block; width:3px; height:60px; background:#c0112f; margin-bottom:20px; border-radius:2px; }
     #nombre-texto { font-weight:400; font-size:0.85em; color:#999; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; }
     #intro-text h1 { font-family:'Poltawski Nowy',serif; font-weight:700; font-size:2em; color:#1a1a1a; margin-bottom:16px; line-height:1.2; }
     #intro-text p { font-weight:300; font-size:1em; line-height:1.8; color:#444; }
-    @media (max-width:900px) {
-      #hero { flex-direction:column; padding:24px 20px; gap:24px; }
-      #wheel-wrap { max-width:100%; }
-      #intro-text { max-width:100%; }
-    }
-
-    #wheel-hint {
-      text-align:center; font-size:1.125em; color:#bbb;
-      font-weight:400; letter-spacing:0.03em; margin-bottom:10px;
-    }
-
-    /* ══ RUEDA ══ */
+    @media (max-width:900px) { #hero { flex-direction:column; padding:24px 20px; gap:24px; } #wheel-wrap { max-width:100%; } #intro-text { max-width:100%; } }
+    #wheel-hint { text-align:center; font-size:1.125em; color:#bbb; font-weight:400; letter-spacing:0.03em; margin-bottom:10px; }
     .segment-group { cursor:pointer; }
     .segment-empty { fill:#f0f0f0; stroke:white; stroke-width:3; }
     .segment-filled { stroke:white; stroke-width:3; transition:filter 0.3s ease; }
@@ -104,23 +49,13 @@
     .center-circle { fill:white; }
     .icon-img { pointer-events:none; user-select:none; opacity:0; transition:opacity 0.4s ease; }
     .icon-img.visible { opacity:1; }
-    .tooltip {
-      position:fixed; background:white; color:#333; padding:12px 16px;
-      border-radius:8px; font-size:14px; pointer-events:none; opacity:0;
-      transition:opacity 0.3s ease; z-index:1000; max-width:250px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15); border:2px solid #e0e0e0;
-    }
+    .tooltip { position:fixed; background:white; color:#333; padding:12px 16px; border-radius:8px; font-size:14px; pointer-events:none; opacity:0; transition:opacity 0.3s ease; z-index:1000; max-width:250px; box-shadow:0 4px 12px rgba(0,0,0,0.15); border:2px solid #e0e0e0; }
     .tooltip.active { opacity:1; }
     .tooltip-title { font-weight:bold; margin-bottom:4px; font-size:15px; }
     .tooltip-score { color:#666; font-size:13px; }
-
-    /* ══ BLOQUES ══ */
     #bloques-section { padding:10px 60px 50px; }
     .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
-    @media (max-width:768px) {
-      .grid { grid-template-columns:1fr; }
-      #bloques-section { padding:10px 20px 30px; }
-    }
+    @media (max-width:768px) { .grid { grid-template-columns:1fr; } #bloques-section { padding:10px 20px 30px; } }
     .column { border-radius:18px; padding:24px 18px; opacity:0; transform:translateY(40px); transition:opacity 0.6s ease, transform 0.6s ease; }
     .column.show { opacity:1; transform:translateY(0); }
     .column.fortaleza   { background:linear-gradient(160deg,#d1fae5,#f0fdf4); }
@@ -136,39 +71,21 @@
     .card h3 { font-weight:500; font-size:0.95em; margin-bottom:8px; }
     .card p  { font-weight:300; font-size:0.9em; line-height:1.7; color:#333; }
     .empty-msg { font-weight:300; font-size:0.88em; color:rgba(0,0,0,0.35); text-align:center; padding:30px 10px; }
-
-    /* ══ QUÉ SIGUE ══ */
     #que-sigue { padding:60px; background:#FFFCFA; }
     #que-sigue h2 { font-family:'Poltawski Nowy',serif; font-weight:700; font-size:2.5em; color:#1a1a1a; margin-bottom:16px; }
     #que-sigue p { font-weight:300; font-size:1.05em; line-height:1.8; color:#444; max-width:780px; }
-    @media (max-width:768px) {
-      #que-sigue { padding:40px 20px; }
-      #que-sigue h2 { font-size:1.9em; }
-    }
-
-    /* ══ SHARE ══ */
+    @media (max-width:768px) { #que-sigue { padding:40px 20px; } #que-sigue h2 { font-size:1.9em; } }
     #share-section { padding:70px 60px; text-align:center; background:white; }
     #share-section h3 { font-weight:400; font-size:0.82em; text-transform:uppercase; letter-spacing:0.14em; color:#bbb; margin-bottom:10px; }
     #share-section h2 { font-weight:500; font-size:1.5em; color:#1a1a1a; margin-bottom:32px; }
     .share-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-    .share-btn {
-      display:inline-flex; align-items:center; gap:10px;
-      padding:13px 26px; border-radius:10px; font-size:0.92em;
-      font-weight:500; text-decoration:none; font-family:'Karla',sans-serif;
-      cursor:pointer; border:none; white-space:nowrap;
-      transition:transform 0.15s, box-shadow 0.15s;
-    }
+    .share-btn { display:inline-flex; align-items:center; gap:10px; padding:13px 26px; border-radius:10px; font-size:0.92em; font-weight:500; text-decoration:none; font-family:'Karla',sans-serif; cursor:pointer; border:none; white-space:nowrap; transition:transform 0.15s, box-shadow 0.15s; }
     .share-btn:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.14); }
     .share-btn svg { width:20px; height:20px; flex-shrink:0; }
     .share-wa   { background:#25D366; color:white; }
     .share-fb   { background:#1877F2; color:white; }
     .share-mail { background:white; color:#333; border:1.5px solid #ddd; }
-    @media (max-width:768px) {
-      #share-section { padding:50px 20px; }
-      .share-buttons { flex-direction:column; align-items:center; }
-    }
-
-    /* ══ FOOTER ══ */
+    @media (max-width:768px) { #share-section { padding:50px 20px; } .share-buttons { flex-direction:column; align-items:center; } }
     #site-footer { background:#f5f5f5; padding:52px 60px 32px; }
     .footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:48px; margin-bottom:40px; align-items:start; }
     .footer-brand img { height:101px; display:block; margin-bottom:20px; }
@@ -186,16 +103,11 @@
     .footer-bottom { border-top:1px solid #ddd; padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.78em; color:#aaa; }
     .footer-bottom a { color:#aaa; text-decoration:none; transition:color 0.2s; }
     .footer-bottom a:hover { color:#c0112f; }
-    @media (max-width:768px) {
-      #site-footer { padding:36px 20px 24px; }
-      .footer-grid { grid-template-columns:1fr 1fr; gap:28px; }
-      .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
-    }
+    @media (max-width:768px) { #site-footer { padding:36px 20px 24px; } .footer-grid { grid-template-columns:1fr 1fr; gap:28px; } .footer-bottom { flex-direction:column; gap:8px; text-align:center; } }
   </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
 <header id="site-header">
   <a class="logo" href="https://sophiamx.org" target="_blank">
     <img src="https://static.wixstatic.com/media/6bf1ef_d0efb91350e04315be1fe1a9982e69c8~mv2.png" alt="Sophia">
@@ -211,7 +123,6 @@
   </nav>
 </header>
 
-<!-- ══ HERO ══ -->
 <div id="hero">
   <div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:576px;flex-shrink:0;">
     <p id="wheel-hint">Pasa por encima de las secciones para conocer tu puntaje</p>
@@ -235,7 +146,6 @@
   </div>
 </div>
 
-<!-- ══ BLOQUES ══ -->
 <div id="bloques-section">
   <div class="grid">
     <div class="column fortaleza" id="col-fortaleza">
@@ -253,13 +163,11 @@
   </div>
 </div>
 
-<!-- ══ QUÉ SIGUE ══ -->
 <div id="que-sigue">
   <h2>¿Qué sigue?</h2>
   <p>Suena fácil, pero descubrir tu propósito no es solo cuestión de llenar un formulario como lo hiciste. Requiere herramientas, acompañamiento y tiempo, y eso es justamente lo que hacemos en SOPHIA.</p>
 </div>
 
-<!-- ══ SHARE ══ -->
 <div id="share-section">
   <h3>¿Te sentiste identificado?</h3>
   <h2>Comparte tus resultados</h2>
@@ -279,7 +187,6 @@
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer id="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
@@ -324,67 +231,17 @@
 </footer>
 
 <script>
-  // ══ AXES — updated colors and icons ══
   const axes = [
-    {
-      name:"Estética Existencial",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a77eaf08dbe3.png",
-      color:"#fd7c65",
-      key:"esteticaExistencial",
-      start:-60, end:0, iconSize:56
-    },
-    {
-      name:"Fe y filosofía de vida",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c167da426a66ac37b.png",
-      color:"#e39dff",
-      key:"feFilosofia",
-      start:0, end:60, iconSize:56
-    },
-    {
-      name:"Vínculos vitales",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c6741fbbfe6.png",
-      color:"#ffae9e",
-      key:"vinculosVitales",
-      start:60, end:120, iconSize:56
-    },
-    {
-      name:"Bienestar emocional",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c36dbfbbfe7.png",
-      color:"#ffcb3c",
-      key:"bienestarEmocional",
-      start:120, end:150, iconSize:56
-    },
-    {
-      name:"Bienestar físico",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd81fc129b408.png",
-      color:"#ff9e3c",
-      key:"bienestarFisico",
-      start:150, end:180, iconSize:56
-    },
-    {
-      name:"Presencia consciente",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd8640a29b409.png",
-      color:"#9ac48e",
-      key:"presenciaConsciente",
-      start:180, end:210, iconSize:56
-    },
-    {
-      name:"Autoconocimiento",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a75ead08dbe2.png",
-      color:"#7f94fe",
-      key:"autoconocimiento",
-      start:210, end:240, iconSize:56
-    },
-    {
-      name:"Trabajo con propósito",
-      icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c753f1555552a60ab.png",
-      color:"#82beff",
-      key:"trabajoPropósito",
-      start:240, end:300, iconSize:56
-    }
+    { name:"Estética Existencial",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a77eaf08dbe3.png", color:"#fd7c65", key:"esteticaExistencial", start:-60,  end:0,   iconSize:56 },
+    { name:"Fe y filosofía de vida", icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c167da426a66ac37b.png", color:"#e39dff", key:"feFilosofia",         start:0,    end:60,  iconSize:56 },
+    { name:"Vínculos vitales",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c6741fbbfe6.png", color:"#ffae9e", key:"vinculosVitales",     start:60,   end:120, iconSize:56 },
+    { name:"Bienestar emocional",    icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c36dbfbbfe7.png", color:"#ffcb3c", key:"bienestarEmocional",  start:120,  end:150, iconSize:56 },
+    { name:"Bienestar físico",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd81fc129b408.png", color:"#ff9e3c", key:"bienestarFisico",     start:150,  end:180, iconSize:56 },
+    { name:"Presencia consciente",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd8640a29b409.png", color:"#9ac48e", key:"presenciaConsciente", start:180,  end:210, iconSize:56 },
+    { name:"Autoconocimiento",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a75ead08dbe2.png", color:"#7f94fe", key:"autoconocimiento",    start:210,  end:240, iconSize:56 },
+    { name:"Trabajo con propósito",  icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c753f1555552a60ab.png", color:"#82beff", key:"trabajoPropósito",    start:240,  end:300, iconSize:56 }
   ];
 
-  // ══ AXES LIST — updated colors ══
   const axesList = [
     { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#7f94fe' },
     { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#ffcb3c' },
@@ -403,13 +260,17 @@
   async function loadData() {
     const params = new URLSearchParams(window.location.search);
     const recordId = params.get('record');
+    const base = params.get('base'); // ← lee el param base del URL
+
     if (!recordId) {
       document.getElementById('nombre-texto').textContent = 'No se encontró el registro';
       hideLoader();
       return;
     }
     try {
-      const res = await fetch('/api/dashboard?recordId=' + recordId);
+      // ← pasa base al API si existe
+      const apiUrl = '/api/dashboard?recordId=' + recordId + (base ? '&base=' + base : '');
+      const res = await fetch(apiUrl);
       if (!res.ok) throw new Error('Error');
       const data = await res.json();
       renderAll(data);
@@ -476,43 +337,22 @@
     svg.innerHTML='';
     var isMobile = window.innerWidth < 600;
     var scale = isMobile ? 1.13 : 1;
-
     for (var i=0; i<axes.length; i++) {
       var axis=axes[i];
       var g=ns('g'); g.classList.add('segment-group'); g.dataset.index=i;
-
-      // Empty background segment
-      var empty=ns('path');
-      empty.setAttribute('d', seg(innerR,outerR,axis.start,axis.end));
-      empty.classList.add('segment-empty'); g.appendChild(empty);
-
-      // Filled score segment
-      var filled=ns('path');
-      filled.setAttribute('d', seg(innerR,innerR+1,axis.start,axis.end));
-      filled.setAttribute('fill',axis.color); filled.classList.add('segment-filled');
-      filled.id='filled-'+i; g.appendChild(filled);
-
+      var empty=ns('path'); empty.setAttribute('d', seg(innerR,outerR,axis.start,axis.end)); empty.classList.add('segment-empty'); g.appendChild(empty);
+      var filled=ns('path'); filled.setAttribute('d', seg(innerR,innerR+1,axis.start,axis.end)); filled.setAttribute('fill',axis.color); filled.classList.add('segment-filled'); filled.id='filled-'+i; g.appendChild(filled);
       svg.appendChild(g);
-
-      // Icon image (all axes now use PNG icons)
       var pos=midIconPos(axis.start,axis.end);
       var sz = axis.iconSize * scale;
-      var img=ns('image');
-      img.setAttribute('href', axis.icon);
+      var img=ns('image'); img.setAttribute('href', axis.icon);
       var xOff = (i === 6) ? -12 : 0;
-      img.setAttribute('x', pos.x - sz/2 + xOff);
-      img.setAttribute('y', pos.y - sz/2);
-      img.setAttribute('width', sz);
-      img.setAttribute('height', sz);
+      img.setAttribute('x', pos.x - sz/2 + xOff); img.setAttribute('y', pos.y - sz/2);
+      img.setAttribute('width', sz); img.setAttribute('height', sz);
       img.classList.add('icon-img'); img.id='icon-'+i;
       svg.appendChild(img);
     }
-
-    // Center white circle
-    var c=ns('circle');
-    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR);
-    c.classList.add('center-circle'); svg.appendChild(c);
-
+    var c=ns('circle'); c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',innerR); c.classList.add('center-circle'); svg.appendChild(c);
     setupTooltips();
   }
 
