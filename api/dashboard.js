@@ -8,6 +8,11 @@ const BASES = {
     BASE_ID:  'appLvhlaoTb5mlrza',
     TABLE_ID: 'tblPISPaN0lPJIekJ',
     TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_CAINTRA
+  },
+  ipade: {
+    BASE_ID:  'appPExXqiXTykZzYC',
+    TABLE_ID: 'tblPISPaN0lPJIekJ',
+    TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_IPADE
   }
 };
 
@@ -64,7 +69,6 @@ export default async function handler(req, res) {
         feFilosofia:         f['Fe y Filosofía de Vida (txt)'] || ''
       }
     });
-
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
