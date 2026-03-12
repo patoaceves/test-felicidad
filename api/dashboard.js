@@ -13,6 +13,11 @@ const BASES = {
     BASE_ID:  'appPExXqiXTykZzYC',
     TABLE_ID: 'tblPISPaN0lPJIekJ',
     TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_IPADE
+  },
+  leafest: {
+    BASE_ID:  'appey8k8MorYEgC70',
+    TABLE_ID: 'tblPISPaN0lPJIekJ',
+    TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_LEAFEST
   }
 };
 
