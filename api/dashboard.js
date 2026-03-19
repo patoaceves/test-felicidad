@@ -14,10 +14,10 @@ const BASES = {
     TABLE_ID: 'tblPISPaN0lPJIekJ',
     TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_IPADE
   },
-  leafest: {
+  nucleofamiliar: {
     BASE_ID:  'appey8k8MorYEgC70',
     TABLE_ID: 'tblPISPaN0lPJIekJ',
-    TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_LEAFEST
+    TOKEN:    process.env.AIRTABLE_TEST_FELICIDAD_NUCLEO_FAMILIAR
   }
 };
 
@@ -31,7 +31,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'recordId requerido' });
   }
 
-  // Si no viene el param 'base', usa la base original → no rompe el flujo viejo
   const config = BASES[base] || BASES.default;
 
   try {
