@@ -20,7 +20,7 @@
     @media (max-width:960px) { #site-header { padding:0 20px; } #site-header nav { display:none; } }
     #wheel-loader { position:absolute; inset:0; background:white; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; z-index:10; border-radius:50%; transition:opacity 0.5s ease; }
     #wheel-loader.hide { opacity:0; pointer-events:none; }
-    .spinner-ring { width:70px; height:70px; border-radius:50%; background:conic-gradient(#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe,#fd7c65); animation:spin 1.2s linear infinite; position:relative; }
+    .spinner-ring { width:70px; height:70px; border-radius:50%; background:conic-gradient(#e3a52d,#d21744,#8d9438,#66a3f4,#e3a52d); animation:spin 1.2s linear infinite; position:relative; }
     .spinner-ring::before { content:''; position:absolute; inset:5px; border-radius:50%; background:white; }
     .spinner-ring::after { content:'😊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:26px; z-index:1; animation:counter-spin 1.2s linear infinite; }
     @keyframes spin { to { transform:rotate(360deg); } }
@@ -29,7 +29,7 @@
     .dots::after { content:''; animation:dots 1.5s steps(4,end) infinite; }
     @keyframes dots { 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} 100%{content:'';} }
     .progress-bar { width:130px; height:4px; background:#f0f0f0; border-radius:4px; overflow:hidden; }
-    .progress-fill { height:100%; width:0%; border-radius:4px; background:linear-gradient(90deg,#fd7c65,#e39dff,#ffae9e,#ffcb3c,#ff9e3c,#82beff,#9ac48e,#7f94fe); background-size:200% 100%; animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite; }
+    .progress-fill { height:100%; width:0%; border-radius:4px; background:linear-gradient(90deg,#e3a52d,#d21744,#8d9438,#66a3f4); background-size:200% 100%; animation:fill 3s ease-in-out forwards, gshift 1.5s ease infinite; }
     @keyframes fill { to { width:100%; } }
     @keyframes gshift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
     #hero { display:flex; align-items:center; justify-content:center; gap:50px; padding:50px 60px 30px; }
@@ -204,7 +204,7 @@
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
-      <p>+52 81 1988 1581<br><a href="mailto:contacto@sophiamx.org">contacto@sophiamx.org</a></p>
+      <p>+52 81 1988 1581<br><a href="/cdn-cgi/l/email-protection#cba8a4a5bfaaa8bfa48bb8a4bba3a2aaa6b3e5a4b9ac"><span class="__cf_email__" data-cfemail="593a36372d383a2d36192a3629313038342177362b3e">[email&#160;protected]</span></a></p>
       <br>
       <p><a href="https://sophiamx.org/politica-de-privacidad" target="_blank" style="color:#999;font-size:0.9em;">Política de Privacidad</a></p>
     </div>
@@ -230,27 +230,27 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const axes = [
-    { name:"Estética Existencial",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a77eaf08dbe3.png", color:"#fd7c65", key:"esteticaExistencial", start:-60,  end:0,   iconSize:56 },
-    { name:"Fe y filosofía de vida", icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c167da426a66ac37b.png", color:"#e39dff", key:"feFilosofia",         start:0,    end:60,  iconSize:56 },
-    { name:"Vínculos vitales",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c6741fbbfe6.png", color:"#ffae9e", key:"vinculosVitales",     start:60,   end:120, iconSize:56 },
-    { name:"Bienestar emocional",    icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c36dbfbbfe7.png", color:"#ffcb3c", key:"bienestarEmocional",  start:120,  end:150, iconSize:56 },
-    { name:"Bienestar físico",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd81fc129b408.png", color:"#ff9e3c", key:"bienestarFisico",     start:150,  end:180, iconSize:56 },
-    { name:"Presencia consciente",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd8640a29b409.png", color:"#9ac48e", key:"presenciaConsciente", start:180,  end:210, iconSize:56 },
-    { name:"Autoconocimiento",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a75ead08dbe2.png", color:"#7f94fe", key:"autoconocimiento",    start:210,  end:240, iconSize:56 },
-    { name:"Trabajo con propósito",  icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c753f1555552a60ab.png", color:"#82beff", key:"trabajoPropósito",    start:240,  end:300, iconSize:56 }
+    { name:"Estética Existencial",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a77eaf08dbe3.png", color:"#e3a52d", key:"esteticaExistencial", start:-60,  end:0,   iconSize:56 },
+    { name:"Fe y filosofía de vida", icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c167da426a66ac37b.png", color:"#e3a52d", key:"feFilosofia",         start:0,    end:60,  iconSize:56 },
+    { name:"Vínculos vitales",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c6741fbbfe6.png", color:"#d21744", key:"vinculosVitales",     start:60,   end:120, iconSize:56 },
+    { name:"Bienestar emocional",    icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c95735c36dbfbbfe7.png", color:"#d21744", key:"bienestarEmocional",  start:120,  end:150, iconSize:56 },
+    { name:"Bienestar físico",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd81fc129b408.png", color:"#8d9438", key:"bienestarFisico",     start:150,  end:180, iconSize:56 },
+    { name:"Presencia consciente",   icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c003fd8640a29b409.png", color:"#8d9438", key:"presenciaConsciente", start:180,  end:210, iconSize:56 },
+    { name:"Autoconocimiento",       icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2cb617a75ead08dbe2.png", color:"#66a3f4", key:"autoconocimiento",    start:210,  end:240, iconSize:56 },
+    { name:"Trabajo con propósito",  icon:"https://assets.cdn.filesafe.space/ek1LQvM0Kyj7fll9nDO7/media/69a30e2c753f1555552a60ab.png", color:"#66a3f4", key:"trabajoPropósito",    start:240,  end:300, iconSize:56 }
   ];
 
   const axesList = [
-    { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#7f94fe' },
-    { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#ffcb3c' },
-    { name:'Bienestar Físico',      key:'bienestarFisico',     color:'#ff9e3c' },
-    { name:'Presencia Consciente',  key:'presenciaConsciente', color:'#9ac48e' },
-    { name:'Vínculos Vitales',      key:'vinculosVitales',     color:'#ffae9e' },
-    { name:'Trabajo con Propósito', key:'trabajoPropósito',    color:'#82beff' },
-    { name:'Estética Existencial',  key:'esteticaExistencial', color:'#fd7c65' },
-    { name:'Fe y Filosofía',        key:'feFilosofia',         color:'#e39dff' }
+    { name:'Autoconocimiento',      key:'autoconocimiento',    color:'#66a3f4' },
+    { name:'Bienestar Emocional',   key:'bienestarEmocional',  color:'#d21744' },
+    { name:'Bienestar Físico',      key:'bienestarFisico',     color:'#8d9438' },
+    { name:'Presencia Consciente',  key:'presenciaConsciente', color:'#8d9438' },
+    { name:'Vínculos Vitales',      key:'vinculosVitales',     color:'#d21744' },
+    { name:'Trabajo con Propósito', key:'trabajoPropósito',    color:'#66a3f4' },
+    { name:'Estética Existencial',  key:'esteticaExistencial', color:'#e3a52d' },
+    { name:'Fe y Filosofía',        key:'feFilosofia',         color:'#e3a52d' }
   ];
 
   const cx=250, cy=250, outerR=220, innerR=80;
@@ -420,12 +420,4 @@
       }
       return html;
     }
-    document.getElementById('fortaleza-content').innerHTML   = cards(fortaleza);
-    document.getElementById('crecimiento-content').innerHTML = cards(crecimiento);
-    document.getElementById('vulnerable-content').innerHTML  = cards(vulnerable);
-  }
-
-  loadData();
-</script>
-</body>
-</html>
+    document.getElementById('fortaleza-conte
